@@ -13,9 +13,14 @@ class Gejala extends Model
         'kode_gejala','nama_gejala','gambar'
     ];
 
-    public function penyakit()
+    public function penyakits()
 {
     return $this->belongsToMany(Penyakit::class, 'rules', 'gejala_id', 'penyakit_id');
+}
+
+public function rules()
+{
+    return $this->hasMany(Rule::class, 'gejala_id');
 }
 }
 

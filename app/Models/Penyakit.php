@@ -11,8 +11,13 @@ class Penyakit extends Model
     protected $table = "penyakit";
     protected $fillable = ['kode_penyakit', 'nama_penyakit', 'penyebab', 'solusi', 'gambar'];
 
-    public function gejala()
+    public function gejalas()
 {
     return $this->belongsToMany(Gejala::class, 'rules', 'penyakit_id', 'gejala_id');
 }
+
+public function rules()
+    {
+        return $this->hasMany(Rule::class, 'penyakit_id');
+    }
 }

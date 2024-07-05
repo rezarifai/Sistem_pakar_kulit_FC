@@ -1,49 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Diagnosa</title>
-    <!-- Tambahkan link Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Tambahkan CSS kustom di sini jika diperlukan */
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2 class="mt-5 fw-bold text-center">Hasil Diagnosa</h2>
-        <p class="fw-semibold text-center mb-5">Berdasarkan gejala yang Anda pilih,  <span class="text-success">{{Auth::user()->name}}</span> mungkin menderita:</p>
-        <div class="row d-flex justify-content-between gap-3">
-            <div class="col-md-3">
-                <div class="mt-5">
-                    <h4>Gejala yang Anda Pilih:</h4>
-                    <ul class="">
-                        @foreach($selectedSymptoms as $gejala)
-                            <li >{{ $gejala->nama_gejala }} ({{ $gejala->kode_gejala }})</li>
-                        @endforeach
-                    </ul>
-                </div>
+@extends('layouts.landingpage')
+
+@section('content')
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h2 class="fw-bold text-center mb-4">Hasil Diagnosa</h2>
+        <div class="row">
+            <div class="col-md-4 text-center mb-3 mb-md-0">
+                @if($penyakitTerbesar)
+                    <img src="{{ asset('storage/' . $penyakitTerbesar['gambar']) }}" alt="{{ $penyakitTerbesar['nama'] }}" class="img-fluid mb-3" style="max-height: 200px;">
+                @else
+                    <p class="text-muted">Gambar tidak tersedia</p>
+                @endif
             </div>
             <div class="col-md-8">
-                @if(count($penyakitMungkin) > 0)
-                <div class="list-group card shadow border-0  mt-4">
-                    @foreach($penyakitMungkin as $penyakit)
-                        <a href="#" class="list-group-item list-group-item-action p-4">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1 fw-bold">{{ $penyakit['nama'] }} ({{ $penyakit['kode'] }})</h5>
-                                <small>{{ $penyakit['persentase'] }}%</small>
-                            </div>
-                            <p class="mb-1"><strong>Penyebab:</strong> {{ $penyakit['penyebab'] }}</p>
-                            <p class="mb-1"><strong>Solusi:</strong> {{ $penyakit['solusi'] }}</p>
-                        </a>
-                    @endforeach
-                </div>
-            @else
-                <p class="lead mt-4">Tidak ada penyakit yang teridentifikasi berdasarkan gejala yang Anda pilih.</p>
-            @endif
+                @if($penyakitTerbesar)
+                    <div class="result-card mb-4">
+                        <h3 class="text-primary">{{ $penyakitTerbesar['nama'] }}</h3>
+                        <p><strong>Kode Penyakit:</strong> {{ $penyakitTerbesar['kode'] }}</p>
+                        <p><strong>Penyebab:</strong> {{ $penyakitTerbesar['penyebab'] }}</p>
+                        <p><strong>Solusi:</strong> {{ $penyakitTerbesar['solusi'] }}</p>
+                        <p><strong>Persentase Kemungkinan:</strong> 
+                            <span class="badge bg-success">{{ round($penyakitTerbesar['persentase'], 2) }}%</span>
+                        </p>
+                        <div class=" mt-5">
+                            <a href="{{ route('form.diagnosa') }}" class="btn btn-primary"><i class="bi bi-arrow-repeat"></i> Diagnosa Ulang</a>
+                        </div>
+                    </div>
+                @else
+                    <p class="text-center">Tidak ada penyakit yang teridentifikasi berdasarkan gejala yang dipilih.</p>
+                @endif
+                
             </div>
+            
         </div>
+
+        <h4 class="mt-4"><i class="bi bi-list-check text-primary"></i> Gejala yang Dipilih:</h4>
+        <ul class="list-group">
+            @foreach($selectedSymptoms as $gejala)
+                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i> {{ $gejala->nama_gejala }}</li>
+            @endforeach
+        </ul>
+
+     
     </div>
-</body>
-</html>
+</div>
+@endsection

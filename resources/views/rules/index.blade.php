@@ -27,7 +27,7 @@
                 <td>{{ $penyakit->nama_penyakit }} - <span class="text-danger font-weight-bold">{{$penyakit->kode_penyakit}}</span></td>
                 <td>
                     <ul>
-                      @foreach($penyakit->gejala as $gejala)
+                      @foreach($penyakit->gejalas as $gejala)
                         <li>{{ $gejala->nama_gejala }} - <span class="text-danger font-weight-bold">{{$gejala->kode_gejala}}</span></li>
                       @endforeach
                     </ul>

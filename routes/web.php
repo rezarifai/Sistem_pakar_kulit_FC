@@ -6,6 +6,7 @@ use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\PenyakitController;
 use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\RuleController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,7 @@ Route::resource('rules', RuleController::class);
 Route::get('/form-diagnosa', [DiagnosaController::class, 'formDiagnosa'])->name('form.diagnosa');
 Route::post('/proses-diagnosa', [DiagnosaController::class, 'prosesDiagnosa'])->name('proses.diagnosa');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('admin');
+Route::post('/check-gejala', [DiagnosaController::class, 'checkGejala']);
+Route::post('/diagnosa/next', [DiagnosaController::class, 'nextGejala'])->name('next.gejala');
+
 

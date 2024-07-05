@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Penyakit;
+use Illuminate\Support\Facades\Storage;
 
 class PenyakitController extends Controller
 {
@@ -29,31 +30,25 @@ class PenyakitController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
-            'kode_penyakit' => 'required|unique:penyakit,kode_penyakit',
+            'kode_penyakit' => 'required|unique:penyakit',
             'nama_penyakit' => 'required',
             'penyebab' => 'required',
             'solusi' => 'required',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'required|image|max:2048'
         ]);
 
-        // Simpan data penyakit ke dalam database
-        $penyakit = new Penyakit();
-        $penyakit->kode_penyakit = $request->kode_penyakit;
-        $penyakit->nama_penyakit = $request->nama_penyakit;
-        $penyakit->penyebab = $request->penyebab;
-        $penyakit->solusi = $request->solusi;
+        $gambarPath = $request->file('gambar')->store('penyakit', 'public');
 
-        if ($request->hasFile('gambar')) {
-            $imageName = time().'.'.$request->gambar->extension();
-            $request->gambar->move(public_path('images'), $imageName);
-            $penyakit->gambar = $imageName;
-        }
+        Penyakit::create([
+            'kode_penyakit' => $request->kode_penyakit,
+            'nama_penyakit' => $request->nama_penyakit,
+            'penyebab' => $request->penyebab,
+            'solusi' => $request->solusi,
+            'gambar' => $gambarPath
+        ]);
 
-        $penyakit->save();
-
-        return redirect()->route('penyakit.index')->with('success', 'Penyakit berhasil ditambahkan!');
+        return redirect()->route('penyakit.index')->with('success', 'Data penyakit berhasil ditambahkan.');
     }
 
     /**
@@ -68,44 +63,43 @@ class PenyakitController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Penyakit $penyakit)
     {
-        $penyakit = Penyakit::findOrFail($id);
-
-        // Validasi input
         $request->validate([
-            'kode_penyakit' => 'required|unique:penyakit,kode_penyakit,'.$id,
+            'kode_penyakit' => 'required|unique:penyakit,kode_penyakit,' . $penyakit->id,
             'nama_penyakit' => 'required',
             'penyebab' => 'required',
             'solusi' => 'required',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'nullable|image|max:2048'
         ]);
 
-        // Update data penyakit dengan data baru
-        $penyakit->kode_penyakit = $request->kode_penyakit;
-        $penyakit->nama_penyakit = $request->nama_penyakit;
-        $penyakit->penyebab = $request->penyebab;
-        $penyakit->solusi = $request->solusi;
-
         if ($request->hasFile('gambar')) {
-            $imageName = time().'.'.$request->gambar->extension();
-            $request->gambar->move(public_path('images'), $imageName);
-            $penyakit->gambar = $imageName;
+            $gambarPath = $request->file('gambar')->store('penyakit', 'public');
+            $penyakit->gambar = $gambarPath;
         }
 
-        $penyakit->save();
+        $penyakit->update([
+            'kode_penyakit' => $request->kode_penyakit,
+            'nama_penyakit' => $request->nama_penyakit,
+            'penyebab' => $request->penyebab,
+            'solusi' => $request->solusi,
+            'gambar' => $penyakit->gambar
+        ]);
 
-        return redirect()->route('penyakit.index')->with('success', 'Penyakit berhasil diperbarui!');
+        return redirect()->route('penyakit.index')->with('success', 'Data penyakit berhasil diperbarui.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Penyakit $penyakit)
     {
-        $penyakit = Penyakit::findOrFail($id); 
+        if ($penyakit->gambar) {
+            Storage::disk('public')->delete($penyakit->gambar);
+        }
+
         $penyakit->delete();
 
-        return redirect()->route('penyakit.index')->with('success', 'Penyakit berhasil dihapus!');
+        return redirect()->route('penyakit.index')->with('success', 'Data penyakit berhasil dihapus.');
     }
 }

@@ -9,11 +9,17 @@ class Rule extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = 'rules'; 
+    protected $fillable = ['penyakit_id', 'gejala_id'];
 
     public function gejala()
     {
-        return $this->belongsToMany(Gejala::class);
+        return $this->belongsTo(Gejala::class, 'gejala_id');
+    }
+
+    public function penyakit()
+    {
+        return $this->belongsTo(Penyakit::class, 'penyakit_id');
     }
    
 }

@@ -15,7 +15,7 @@
                 <label for="gejala">Gejala</label>
                 <select class="form-control select2" name="gejala_id[]" id="gejala" multiple>
                     @foreach($gejala as $g)
-                        <option value="{{ $g->id }}" {{ $penyakit->gejala->contains($g->id) ? 'selected' : '' }}>{{ $g->nama_gejala }}</option>
+                        <option value="{{ $g->id }}" {{ $penyakit->gejalas->contains($g->id) ? 'selected' : '' }}>{{ $g->nama_gejala }}</option>
                     @endforeach
                 </select>
             </div>

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('gejala_id');
             $table->timestamps();
 
-            // Define foreign keys
             $table->foreign('penyakit_id')->references('id')->on('penyakit')->onDelete('cascade');
             $table->foreign('gejala_id')->references('id')->on('gejala')->onDelete('cascade');
 

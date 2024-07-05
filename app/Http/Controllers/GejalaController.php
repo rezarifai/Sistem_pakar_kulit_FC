@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gejala;
+use Illuminate\Support\Facades\Storage;
 
 class GejalaController extends Controller
 {
@@ -29,20 +30,21 @@ class GejalaController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
-            'kode_gejala' => 'required|unique:gejala',
+            'kode_gejala' => 'required|unique:gejala,kode_gejala',
             'nama_gejala' => 'required',
+            'gambar' => 'required|image|max:2048',
         ]);
 
-        // Simpan data gejala ke dalam database
-        $gejala = new Gejala();
-        $gejala->kode_gejala = $request->kode_gejala;
-        $gejala->nama_gejala = $request->nama_gejala;
-        $gejala->save();
+        $path = $request->file('gambar')->store('gejala', 'public');
 
-        // Redirect atau berikan respons sesuai kebutuhan aplikasi Anda
-        return redirect()->route('gejala.index')->with('success', 'Gejala berhasil ditambahkan!');
+        Gejala::create([
+            'kode_gejala' => $request->kode_gejala,
+            'nama_gejala' => $request->nama_gejala,
+            'gambar' => $path,
+        ]);
+
+        return redirect()->route('gejala.index')->with('success', 'Gejala berhasil ditambahkan');
     }
 
     /**
@@ -73,11 +75,14 @@ class GejalaController extends Controller
         $request->validate([
             'kode_gejala' => 'required|unique:gejala,kode_gejala,'.$id,
             'nama_gejala' => 'required',
+            'gambar' => 'required|image|max:2048',
         ]);
 
-        // Update data gejala dengan data baru
+        
+        $path = $request->file('gambar')->store('gejala', 'public');
         $item->kode_gejala = $request->kode_gejala;
         $item->nama_gejala = $request->nama_gejala;
+        $item->gambar = $path;
         $item->save();
 
         return redirect()->route('gejala.index')->with('success', 'Gejala berhasil diperbarui!');
@@ -86,11 +91,13 @@ class GejalaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Gejala $gejala)
     {
-        $item = Gejala::findOrFail($id); 
-        $item->delete();
+        if ($gejala->gambar) {
+            Storage::delete('public/' . $gejala->gambar);
+        }
+        $gejala->delete();
 
-        return redirect()->route('gejala.index')->with('success', 'Gejala berhasil dihapus!');
+        return redirect()->route('gejala.index')->with('success', 'Gejala berhasil dihapus');
     }
 }

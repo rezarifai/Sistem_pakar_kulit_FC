@@ -68,7 +68,7 @@ class RuleController extends Controller
         $penyakit = Penyakit::findOrFail($id);
     
         // Update gejala pada penyakit yang bersangkutan
-        $penyakit->gejala()->sync($request->gejala_id);
+        $penyakit->gejalas()->sync($request->gejala_id);
     
         // Redirect kembali dengan pesan sukses
         return redirect()->route('rules.index')->with('success', 'Data aturan berhasil diperbarui.');

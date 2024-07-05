@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('email');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('alamat');
             $table->string('no_telepon');
-
             $table->timestamps();
         });
     }

@@ -1,62 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Diagnosa</title>
-    <!-- Tautan Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #343a40;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        button[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-5">
-        <h2 class="fw-bold">Pilih Gejala</h2>
-        <form action="{{ route('proses.diagnosa') }}" method="POST">
-            @csrf
-            <div class="row">
-                @foreach($gejala as $item)
-                <div class="col-md-6">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="{{ $item->kode_gejala }}" name="gejala[]" value="{{ $item->kode_gejala }}">
-                        <label class="form-check-label" for="{{ $item->kode_gejala }}">{{ $item->nama_gejala }}</label>
+@extends('layouts.landingpage')
+
+@section('content')
+<div class="container mt-5">
+    <div class="card  border-0">
+        <div class="card-body">
+            <div class="row align-items-center " style="height: 70vh">
+                <div class="col-md-6 text-center">
+                    <span class="fw-bold ">Apakah Anda Mengalami Gejala Ini?</span>
+                    <h1 class="fw-bold mb-5">{{ $gejala->nama_gejala }}</h1>
+
+                    <div class="d-flex justify-content-center mb-4 gap-2">
+                        <form action="{{ route('next.gejala') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <input type="hidden" name="gejala_id" value="{{ $gejala->id }}">
+                            <input type="hidden" name="jawaban" value="ya">
+                            <button type="submit" class="btn btn-primary px-5 py-2">
+                                <i class="bi bi-check-circle-fill me-2"></i> Ya
+                            </button>
+                        </form>
+                        <form action="{{ route('next.gejala') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <input type="hidden" name="gejala_id" value="{{ $gejala->id }}">
+                            <input type="hidden" name="jawaban" value="tidak">
+                            <button type="submit" class="btn btn-danger px-5 py-2">
+                                <i class="bi bi-x-circle-fill me-2"></i> Tidak
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="alert alert-info" role="alert">
+                            <i class="bi bi-info-circle-fill text-primary me-2"></i>
+                            Pilih "Ya" jika Anda mengalami gejala tersebut, atau "Tidak" jika tidak.
+                        </div>
                     </div>
                 </div>
-                @endforeach
+                <div class="col-md-6 text-center ">
+                    <img src="{{ asset('storage/' . $gejala->gambar) }}" alt="{{ $gejala->nama_gejala }}" class="img-fluid rounded shadow mt-md-0 mt-5">
+                    
+                </div>
             </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary mt-5 ">Proses Diagnosa</button>
-            </div>            
-        </form>
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+
+@endsection
