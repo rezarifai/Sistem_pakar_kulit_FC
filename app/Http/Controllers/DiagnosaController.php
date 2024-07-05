@@ -12,123 +12,100 @@ class DiagnosaController extends Controller
     /**
      * Display a listing of the resource.
      */
-     public function formDiagnosa()
-     {
-        $gejalaPertama = Gejala::first();
-        session()->put('penyakit_diperiksa', []);
-        
-         return view('form_diagnosa', ['gejala' => $gejalaPertama]);
-     }
- 
-     /**
-      * Process each gejala and navigate to the next one.
-      */
-     public function nextGejala(Request $request)
-     {
-         $gejalaId = $request->input('gejala_id');
-         $jawaban = $request->input('jawaban');
- 
-         // Simpan jawaban ke sesi atau database sementara
-         session()->push('gejala_dijawab', [
-             'id' => $gejalaId,
-             'jawaban' => $jawaban
-         ]);
- 
-         // Dapatkan gejala berikutnya berdasarkan jawaban
-         $gejalaBerikutnya = $this->getNextGejala($gejalaId, $jawaban);
- 
-         if ($gejalaBerikutnya) {
-             return view('form_diagnosa', ['gejala' => $gejalaBerikutnya]);
-         } else {
-             // Jika tidak ada gejala berikutnya, proses hasil diagnosa
-             return $this->prosesDiagnosa();
-         }
-     }
- 
-     /**
-      * Get the next gejala based on the current gejala and answer.
-      */
-      private function getNextGejala($currentGejalaId, $jawaban)
-      {
-          $gejala = Gejala::find($currentGejalaId);
-          $penyakitTerkait = $gejala->penyakits;
-  
-          if ($jawaban == 'ya') {
-              // Jika jawaban "ya", ambil gejala berikutnya dari penyakit yang sama
-              foreach ($penyakitTerkait as $penyakit) {
-                  if (!in_array($penyakit->id, session()->get('penyakit_diperiksa'))) {
-                      session()->push('penyakit_diperiksa', $penyakit->id);
-                      $gejalaBerikutnya = $penyakit->gejalas->where('id', '!=', $currentGejalaId)->first();
-                      if ($gejalaBerikutnya) {
-                          return $gejalaBerikutnya;
-                      }
-                  }
-              }
-          } else {
-              // Jika jawaban "tidak", lompat ke gejala pertama dari penyakit lain yang belum diperiksa
-              foreach ($penyakitTerkait as $penyakit) {
-                  session()->push('penyakit_diperiksa', $penyakit->id);
-              }
-  
-              $penyakitLain = Penyakit::whereNotIn('id', session()->get('penyakit_diperiksa'))->first();
-              if ($penyakitLain) {
-                  session()->push('penyakit_diperiksa', $penyakitLain->id);
-                  return $penyakitLain->gejalas->first();
-              }
-          }
-  
-          // Jika tidak ada gejala berikutnya
-          return null;
-      }
- 
-     /**
-      * Process the final diagnosis.
-      */
-      private function prosesDiagnosa()
-    {
-        $gejalaYangDipilih = collect(session('gejala_dijawab'))->where('jawaban', 'ya')->pluck('id');
+    public function formPenyakit()
+{
+    $penyakits = Penyakit::all();
+    return view('form_penyakit',compact('penyakits'));
+}
+    
+    public function formDiagnosa()
+{
+    $gejalaPertama = Gejala::first();
+    $semuaGejala = Gejala::pluck('id')->toArray();
+    session()->put('penyakit_diperiksa', []);
+    session()->put('gejala_dijawab', []);
+    session()->put('semua_gejala', $semuaGejala);
+    session()->put('index_gejala', 0);
 
-        $penyakitMungkin = [];
-        foreach ($gejalaYangDipilih as $gejalaId) {
-            $gejala = Gejala::find($gejalaId);
-            $penyakit = $gejala->penyakits;
+    return view('form_diagnosa', ['gejala' => $gejalaPertama]);
+}
 
-            foreach ($penyakit as $item) {
-                if (!isset($penyakitMungkin[$item->id])) {
-                    $penyakitMungkin[$item->id] = [
-                        'kode' => $item->kode_penyakit,
-                        'nama' => $item->nama_penyakit,
-                        'gambar' => $item->gambar,
-                        'persentase' => 0,
-                        'penyebab' => $item->penyebab,
-                        'solusi' => $item->solusi,
-                        'total_gejala' => $item->gejalas->count(), // Tambahkan total gejala
-                        'cocok_gejala' => 0
-                    ];
-                }
-                $penyakitMungkin[$item->id]['cocok_gejala'] += 1;
-            }
-        }
+public function nextGejala(Request $request)
+{
+    $gejalaId = $request->input('gejala_id');
+    $jawaban = $request->input('jawaban');
 
-        if (count($penyakitMungkin) > 0) {
-            // Hitung persentase untuk setiap penyakit
-            foreach ($penyakitMungkin as $id => $penyakit) {
-                $penyakitMungkin[$id]['persentase'] = ($penyakit['cocok_gejala'] / $penyakit['total_gejala']) * 100;
-            }
+    // Simpan jawaban ke sesi
+    session()->push('gejala_dijawab', [
+        'id' => $gejalaId,
+        'jawaban' => $jawaban
+    ]);
 
-            // Temukan penyakit dengan persentase tertinggi
-            $penyakitTerbesar = collect($penyakitMungkin)->sortByDesc('persentase')->first();
-        } else {
-            $penyakitTerbesar = null;
-        }
+    // Dapatkan indeks gejala berikutnya
+    $indexGejala = session()->get('index_gejala');
+    $indexGejala++;
+    session()->put('index_gejala', $indexGejala);
 
-        $selectedSymptoms = Gejala::whereIn('id', $gejalaYangDipilih)->get();
+    $semuaGejala = session()->get('semua_gejala');
 
-        session()->forget('gejala_dijawab');
-        session()->forget('penyakit_diperiksa');
-
-        return view('hasil_diagnosa', compact('penyakitTerbesar', 'selectedSymptoms'));
+    // Periksa apakah masih ada gejala yang belum dijawab
+    if ($indexGejala < count($semuaGejala)) {
+        $gejalaBerikutnyaId = $semuaGejala[$indexGejala];
+        $gejalaBerikutnya = Gejala::find($gejalaBerikutnyaId);
+        return view('form_diagnosa', ['gejala' => $gejalaBerikutnya]);
+    } else {
+        // Jika semua gejala telah dijawab, proses hasil diagnosa
+        return $this->prosesDiagnosa();
     }
+}
+
+private function prosesDiagnosa()
+{
+    $gejalaYangDipilih = collect(session('gejala_dijawab'))->where('jawaban', 'ya')->pluck('id');
+
+    $penyakitMungkin = [];
+    foreach ($gejalaYangDipilih as $gejalaId) {
+        $gejala = Gejala::find($gejalaId);
+        $penyakit = $gejala->penyakits;
+
+        foreach ($penyakit as $item) {
+            if (!isset($penyakitMungkin[$item->id])) {
+                $penyakitMungkin[$item->id] = [
+                    'kode' => $item->kode_penyakit,
+                    'nama' => $item->nama_penyakit,
+                    'gambar' => $item->gambar,
+                    'persentase' => 0,
+                    'penyebab' => $item->penyebab,
+                    'solusi' => $item->solusi,
+                    'total_gejala' => $item->gejalas->count(),
+                    'cocok_gejala' => 0
+                ];
+            }
+            $penyakitMungkin[$item->id]['cocok_gejala'] += 1;
+        }
+    }
+
+    if (count($penyakitMungkin) > 0) {
+        // Hitung persentase untuk setiap penyakit
+        foreach ($penyakitMungkin as $id => $penyakit) {
+            $penyakitMungkin[$id]['persentase'] = ($penyakit['cocok_gejala'] / $penyakit['total_gejala']) * 100;
+        }
+
+        // Urutkan penyakit berdasarkan persentase tertinggi
+        $penyakitTerbesar = collect($penyakitMungkin)->sortByDesc('persentase');
+    } else {
+        $penyakitTerbesar = null;
+    }
+
+    $selectedSymptoms = Gejala::whereIn('id', $gejalaYangDipilih)->get();
+
+    session()->forget('gejala_dijawab');
+    session()->forget('penyakit_diperiksa');
+    session()->forget('semua_gejala');
+    session()->forget('index_gejala');
+
+    return view('hasil_diagnosa', compact('penyakitTerbesar', 'selectedSymptoms'));
+}
     
     public function index()
     {

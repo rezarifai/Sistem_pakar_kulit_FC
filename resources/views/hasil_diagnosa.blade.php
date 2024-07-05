@@ -1,47 +1,45 @@
 @extends('layouts.landingpage')
 
 @section('content')
-<div class="container mt-5">
-    <div class="card shadow-sm p-4">
-        <h2 class="fw-bold text-center mb-4">Hasil Diagnosa</h2>
-        <div class="row">
-            <div class="col-md-4 text-center mb-3 mb-md-0">
-                @if($penyakitTerbesar)
-                    <img src="{{ asset('storage/' . $penyakitTerbesar['gambar']) }}" alt="{{ $penyakitTerbesar['nama'] }}" class="img-fluid mb-3" style="max-height: 200px;">
-                @else
-                    <p class="text-muted">Gambar tidak tersedia</p>
-                @endif
-            </div>
-            <div class="col-md-8">
-                @if($penyakitTerbesar)
-                    <div class="result-card mb-4">
-                        <h3 class="text-primary">{{ $penyakitTerbesar['nama'] }}</h3>
-                        <p><strong>Kode Penyakit:</strong> {{ $penyakitTerbesar['kode'] }}</p>
-                        <p><strong>Penyebab:</strong> {{ $penyakitTerbesar['penyebab'] }}</p>
-                        <p><strong>Solusi:</strong> {{ $penyakitTerbesar['solusi'] }}</p>
-                        <p><strong>Persentase Kemungkinan:</strong> 
-                            <span class="badge bg-success">{{ round($penyakitTerbesar['persentase'], 2) }}%</span>
-                        </p>
-                        <div class=" mt-5">
-                            <a href="{{ route('form.diagnosa') }}" class="btn btn-primary"><i class="bi bi-arrow-repeat"></i> Diagnosa Ulang</a>
+<section class="bg-gradient-to-b from-blue-100 to-white dark:bg-gray-900 p-5 flex items-center justify-center min-h-screen">
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full max-w-6xl mt-20">
+        <div class="p-5">
+            <h2 class="font-bold text-center text-3xl md:text-5xl mb-5">Hasil Diagnosa</h2>
+            
+            @if($penyakitTerbesar && count($penyakitTerbesar) > 0)
+                @foreach($penyakitTerbesar as $penyakit)
+                <div class="flex flex-col md:flex-row mb-5">
+                    <div class="md:w-1/3 mx-auto mb-3 md:mb-0 text-center">
+                        <img src="{{ asset('storage/' . $penyakit['gambar']) }}" alt="{{ $penyakit['nama'] }}" class="mb-3 max-h-200px mx-auto">
+                    </div>
+                    <div class="md:w-2/3">
+                        <div class="result-card mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-md">
+                            <h3 class="text-primary text-2xl font-semibold">{{ $penyakit['nama'] }}</h3>
+                            <p><strong>Kode Penyakit:</strong> {{ $penyakit['kode'] }}</p>
+                            <p><strong>Penyebab:</strong> {{ $penyakit['penyebab'] }}</p>
+                            <p><strong>Solusi:</strong> {{ $penyakit['solusi'] }}</p>
+                            <p><strong>Persentase Kemungkinan:</strong> 
+                                <span class="bg-green-500 text-white py-1 px-2 rounded-md">{{ round($penyakit['persentase'], 2) }}%</span>
+                            </p>
                         </div>
                     </div>
-                @else
-                    <p class="text-center">Tidak ada penyakit yang teridentifikasi berdasarkan gejala yang dipilih.</p>
-                @endif
-                
-            </div>
-            
+                </div>
+                @endforeach
+            @else
+                <p class="text-center text-xl text-gray-700 dark:text-gray-300">Tidak ada penyakit yang teridentifikasi berdasarkan gejala yang dipilih.</p>
+            @endif
+
+            <h4 class="mt-4 text-xl text-gray-700 dark:text-gray-300">
+                <i class="bi bi-list-check text-primary"></i> Gejala yang Dipilih:
+            </h4>
+            <ul class="list-none ml-0">
+                @foreach($selectedSymptoms as $gejala)
+                    <li class="flex items-center text-green-500">
+                        <i class="bi bi-check2-circle mr-2"></i> {{ $gejala->nama_gejala }}
+                    </li>
+                @endforeach
+            </ul>
         </div>
-
-        <h4 class="mt-4"><i class="bi bi-list-check text-primary"></i> Gejala yang Dipilih:</h4>
-        <ul class="list-group">
-            @foreach($selectedSymptoms as $gejala)
-                <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i> {{ $gejala->nama_gejala }}</li>
-            @endforeach
-        </ul>
-
-     
     </div>
-</div>
+</section>
 @endsection

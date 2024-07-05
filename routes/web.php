@@ -25,15 +25,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('pasiens', PasienController::class);
-Route::resource('gejala', GejalaController::class);
-Route::resource('penyakit', PenyakitController::class);
-Route::resource('diagnosa', DiagnosaController::class);
-Route::resource('rules', RuleController::class);
-Route::get('/form-diagnosa', [DiagnosaController::class, 'formDiagnosa'])->name('form.diagnosa');
-Route::post('/proses-diagnosa', [DiagnosaController::class, 'prosesDiagnosa'])->name('proses.diagnosa');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('admin');
-Route::post('/check-gejala', [DiagnosaController::class, 'checkGejala']);
-Route::post('/diagnosa/next', [DiagnosaController::class, 'nextGejala'])->name('next.gejala');
+Route::middleware('auth')->group(function () {
+
+    Route::resource('pasiens', PasienController::class);
+    Route::resource('gejala', GejalaController::class);
+    Route::resource('penyakit', PenyakitController::class);
+    Route::resource('diagnosa', DiagnosaController::class);
+    Route::resource('rules', RuleController::class);
+    Route::get('/form-diagnosa', [DiagnosaController::class, 'formDiagnosa'])->name('form.diagnosa');
+    Route::get('/form-penyakit', [DiagnosaController::class, 'formPenyakit'])->name('form.penyakit');
+    Route::post('/proses-diagnosa', [DiagnosaController::class, 'prosesDiagnosa'])->name('proses.diagnosa');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('admin');
+    Route::post('/check-gejala', [DiagnosaController::class, 'checkGejala']);
+    Route::post('/diagnosa/next', [DiagnosaController::class, 'nextGejala'])->name('next.gejala');
+});
+
 
 

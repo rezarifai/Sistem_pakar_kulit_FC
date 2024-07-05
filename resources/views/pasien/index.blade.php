@@ -1,19 +1,9 @@
 @extends('layouts.dashboard')
 @section('title','Data Pasien')
 @section('content')
-   <div class="card p-3 shadow border-0">
-    @if (session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
-    <div class="col-md-3">
-
-    </div>
-    <table>
+   <div class="card shadow border-0">
+   <div class="card-body">
+    <table class="table" id="table1">
         <thead>
             <tr>
                 <th>No</th>
@@ -28,8 +18,8 @@
            @foreach ($pasiens as $item)
            <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$item->nama}}</td>
-            <td>{{$item->email}}</td>
+            <td>{{$item->user->name}}</td>
+            <td>{{$item->user->email}}</td>
             <td>{{$item->alamat}}</td>
             <td>{{$item->no_telepon}}</td>
             <td>
@@ -44,5 +34,7 @@
            @endforeach
         </tbody>
     </table>
+   </div>
+
    </div>
 @endsection
