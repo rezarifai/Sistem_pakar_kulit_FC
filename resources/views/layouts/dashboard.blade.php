@@ -114,7 +114,7 @@
                         </li>
                         <li class="sidebar-item {{ request()->is('pasiens') ? 'active' : '' }} ">
                             <a href="{{ route('pasiens.index') }}" class='sidebar-link'>
-                                <i class="bi bi-image-fill"></i>
+                                <i class="bi bi-people-fill"></i>
                                 <span>Pasien</span>
                             </a>
                         </li>
@@ -158,8 +158,9 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" id="profileDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="mx-3 fw-bold">Welcome, {{ Auth::user()->name }}</span>
-                        <img src="{{ asset('../assets') }}/img/profile.png" alt="Profile"
-                            style="width: 40px; height: 40px; border-radius: 50%;">
+                        <div class="avatar avatar-xl">
+                            <img src="./assets/compiled/jpg/1.jpg" alt="Face 1">
+                        </div>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                         <li>
