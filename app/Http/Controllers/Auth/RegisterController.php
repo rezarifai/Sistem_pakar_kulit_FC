@@ -59,8 +59,8 @@ class RegisterController extends Controller
 
         if ($validator->fails()) {
             return redirect()->route('register')
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         // Validation passed; create new user
@@ -76,8 +76,6 @@ class RegisterController extends Controller
             'no_telepon' => $request->phone,
         ]);
 
-        // Redirect to a success page or wherever you need
-return redirect('/')->with('success', 'Registration successful!');
-
+        return redirect('/login')->with('success', 'Registration successful!');
     }
 }

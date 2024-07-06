@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('admin');
     Route::post('/check-gejala', [DiagnosaController::class, 'checkGejala']);
     Route::post('/diagnosa/next', [DiagnosaController::class, 'nextGejala'])->name('next.gejala');
+    Route::get('/diagnosa/previous', [DiagnosaController::class, 'previousGejala'])->name('previous.gejala');
+
 });
 
 

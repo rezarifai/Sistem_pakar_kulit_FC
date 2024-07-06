@@ -10,7 +10,7 @@
                 @foreach($penyakitTerbesar as $penyakit)
                 <div class="flex flex-col md:flex-row mb-5">
                     <div class="md:w-1/3 mx-auto mb-3 md:mb-0 text-center">
-                        <img src="{{ asset('storage/' . $penyakit['gambar']) }}" alt="{{ $penyakit['nama'] }}" class="mb-3 max-h-200px mx-auto">
+                        <img src="{{ asset('storage/' . $penyakit['gambar']) }}" alt="{{ $penyakit['nama'] }}" class="mb-3 max-h-150px mx-auto">
                     </div>
                     <div class="md:w-2/3">
                         <div class="result-card mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-md">

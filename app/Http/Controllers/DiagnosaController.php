@@ -18,7 +18,7 @@ class DiagnosaController extends Controller
     return view('form_penyakit',compact('penyakits'));
 }
     
-    public function formDiagnosa()
+public function formDiagnosa()
 {
     $gejalaPertama = Gejala::first();
     $semuaGejala = Gejala::pluck('id')->toArray();
@@ -26,8 +26,13 @@ class DiagnosaController extends Controller
     session()->put('gejala_dijawab', []);
     session()->put('semua_gejala', $semuaGejala);
     session()->put('index_gejala', 0);
+    session()->put('total_gejala', count($semuaGejala));
 
-    return view('form_diagnosa', ['gejala' => $gejalaPertama]);
+    return view('form_diagnosa', [
+        'gejala' => $gejalaPertama,
+        'total_gejala' => count($semuaGejala),
+        'index_gejala' => 1
+    ]);
 }
 
 public function nextGejala(Request $request)
@@ -47,12 +52,17 @@ public function nextGejala(Request $request)
     session()->put('index_gejala', $indexGejala);
 
     $semuaGejala = session()->get('semua_gejala');
+    $totalGejala = count($semuaGejala);
 
     // Periksa apakah masih ada gejala yang belum dijawab
     if ($indexGejala < count($semuaGejala)) {
         $gejalaBerikutnyaId = $semuaGejala[$indexGejala];
         $gejalaBerikutnya = Gejala::find($gejalaBerikutnyaId);
-        return view('form_diagnosa', ['gejala' => $gejalaBerikutnya]);
+        return view('form_diagnosa', [
+            'gejala' => $gejalaBerikutnya,
+            'total_gejala' => $totalGejala,
+            'index_gejala' => $indexGejala + 1 // Menambah 1 agar sesuai dengan urutan manusia
+        ]);
     } else {
         // Jika semua gejala telah dijawab, proses hasil diagnosa
         return $this->prosesDiagnosa();

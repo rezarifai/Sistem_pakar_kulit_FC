@@ -4,6 +4,7 @@
 <section class="bg-gradient-to-b from-blue-100 to-white dark:bg-gray-900 p-5 h-screen flex items-center justify-center">
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full max-w-6xl mt-10">
         <div class="p-5">
+           
             <h2 class="font-bold text-center text-3xl md:text-5xl mb-5">Daftar Penyakit</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-center ">
                 @foreach($penyakits->chunk(5) as $chunk)
