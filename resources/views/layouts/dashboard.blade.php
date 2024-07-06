@@ -115,7 +115,7 @@
                         <li class="sidebar-item {{ request()->is('pasiens') ? 'active' : '' }} ">
                             <a href="{{ route('pasiens.index') }}" class='sidebar-link'>
                                 <i class="bi bi-image-fill"></i>
-                                <span>pasiens</span>
+                                <span>Pasien</span>
                             </a>
                         </li>
                         <li class="sidebar-item {{ request()->is('penyakit') ? 'active' : '' }} ">

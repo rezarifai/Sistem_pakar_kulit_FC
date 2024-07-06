@@ -16,124 +16,101 @@ class GejalaSeeder extends Seeder
     {
         $gejalaPenyakitKulit = [
             [
-                'kode_gejala' => 'GK001',
-                'nama_gejala' => 'Ruam merah pada kulit',
+                'kode_gejala' => 'G01',
+                'nama_gejala' => 'Ada peradangan pada kulit berwarna kemerahan ',
             ],
             [
-                'kode_gejala' => 'GK002',
-                'nama_gejala' => 'Gatal-gatal pada area tertentu',
+                'kode_gejala' => 'G02',
+                'nama_gejala' => 'Terdapat bintik-bintik warna merah',
             ],
             [
-                'kode_gejala' => 'GK003',
-                'nama_gejala' => 'Bengkak atau kemerahan pada kulit',
+                'kode_gejala' => 'G03',
+                'nama_gejala' => 'Kulit kering dan bersisik  ',
             ],
             [
-                'kode_gejala' => 'GK004',
-                'nama_gejala' => 'Kulit mengelupas',
+                'kode_gejala' => 'G04',
+                'nama_gejala' => 'Bercak kemerahan yang terasa gatal di sekitar mulut dan hidung, tetapi tidak menimbulkan nyeri ',
             ],
             [
-                'kode_gejala' => 'GK005',
-                'nama_gejala' => 'Noda atau bintik-bintik pada kulit',
+                'kode_gejala' => 'G05',
+                'nama_gejala' => 'Koreng berwarna kuning kecokelatan di sekitar luka ',
             ],
             [
-                'kode_gejala' => 'GK006',
-                'nama_gejala' => 'Kulit kering dan pecah-pecah',
+                'kode_gejala' => 'G06',
+                'nama_gejala' => 'Iritasi pada kulit di sekitar luka ',
             ],
             [
-                'kode_gejala' => 'GK007',
-                'nama_gejala' => 'Muncul benjolan atau tonjolan pada kulit',
+                'kode_gejala' => 'G07',
+                'nama_gejala' => 'Pembengkakan dan kemerahan',
             ],
             [
-                'kode_gejala' => 'GK008',
-                'nama_gejala' => 'Rasa terbakar atau panas pada kulit',
+                'kode_gejala' => 'G08',
+                'nama_gejala' => 'Rasa nyeri atau sakit pada area yang terinfeksi ',
             ],
             [
-                'kode_gejala' => 'GK009',
-                'nama_gejala' => 'Timbul vesikel atau gelembung air pada kulit',
+                'kode_gejala' => 'G09',
+                'nama_gejala' => 'Bernanah atau pus',
             ],
             [
-                'kode_gejala' => 'GK010',
-                'nama_gejala' => 'Kulit bersisik',
+                'kode_gejala' => 'G10',
+                'nama_gejala' => 'Luka melepuh atau lepuhan ',
             ],
             [
-                'kode_gejala' => 'GK011',
-                'nama_gejala' => 'Kemerahan yang disertai rasa nyeri',
+                'kode_gejala' => 'G11',
+                'nama_gejala' => 'Sensasi Gatal, Terbakar, atau Kesemutan ',
             ],
             [
-                'kode_gejala' => 'GK012',
-                'nama_gejala' => 'Kulit mengeras',
+                'kode_gejala' => 'G12',
+                'nama_gejala' => 'Pembengkakan dan Kemerahan ',
             ],
             [
-                'kode_gejala' => 'GK013',
-                'nama_gejala' => 'Kulit melepuh',
+                'kode_gejala' => 'G13',
+                'nama_gejala' => 'Kulit terasa gatal ',
             ],
             [
-                'kode_gejala' => 'GK014',
-                'nama_gejala' => 'Rasa terbakar saat kulit terkena air',
+                'kode_gejala' => 'G14',
+                'nama_gejala' => 'Ruam Berbentuk Garis atau Gelembung',
             ],
             [
-                'kode_gejala' => 'GK015',
-                'nama_gejala' => 'Pembengkakan pada area tertentu',
+                'kode_gejala' => 'G15',
+                'nama_gejala' => 'PKulit kering dan berkerak ',
             ],
             [
-                'kode_gejala' => 'GK016',
-                'nama_gejala' => 'Perubahan warna kulit',
+                'kode_gejala' => 'G16',
+                'nama_gejala' => 'Ruam Merah Berbentuk Cincin ',
             ],
             [
-                'kode_gejala' => 'GK017',
-                'nama_gejala' => 'Timbul lepuhan pada kulit',
+                'kode_gejala' => 'G17',
+                'nama_gejala' => 'Deskuamasi dan Penebalan Kulit ',
             ],
             [
-                'kode_gejala' => 'GK018',
-                'nama_gejala' => 'Gatal yang parah pada malam hari',
+                'kode_gejala' => 'G18',
+                'nama_gejala' => 'Kulit Pecah-pecah atau Mengelupas ',
             ],
             [
-                'kode_gejala' => 'GK019',
-                'nama_gejala' => 'Kulit terasa panas',
+                'kode_gejala' => 'G19',
+                'nama_gejala' => 'Papula,benjolan kecil kemerahan yang biasanya terasa nyeri ',
             ],
             [
-                'kode_gejala' => 'GK020',
-                'nama_gejala' => 'Bercak putih pada kulit',
+                'kode_gejala' => 'G20',
+                'nama_gejala' => 'Pastula,benjolan kecil yang diujungnya terdapat Kumpulan nanah berwarna putih kekuningan',
             ],
             [
-                'kode_gejala' => 'GK021',
-                'nama_gejala' => 'Perubahan tekstur kulit',
+                'kode_gejala' => 'G21',
+                'nama_gejala' => 'Nodul,benjolan cukup besar dibawah kulit yang teraba padat dan terasa nyeri ',
             ],
             [
-                'kode_gejala' => 'GK022',
-                'nama_gejala' => 'Kulit pecah-pecah',
+                'kode_gejala' => 'G22',
+                'nama_gejala' => 'Bercak Putih atau Kepelaran pada Kulit ',
             ],
             [
-                'kode_gejala' => 'GK023',
-                'nama_gejala' => 'Kulit terasa kaku',
+                'kode_gejala' => 'G23',
+                'nama_gejala' => 'Hilangnya pigmen warna di rambut, janggut, bulu mata, dan alis, sehingga terlihat seperti uban  ',
             ],
             [
-                'kode_gejala' => 'GK024',
-                'nama_gejala' => 'Timbul rasa gatal saat berkeringat',
-            ],
-            [
-                'kode_gejala' => 'GK025',
-                'nama_gejala' => 'Kulit bersisik tebal',
-            ],
-            [
-                'kode_gejala' => 'GK026',
-                'nama_gejala' => 'Pembengkakan yang meradang pada kulit',
-            ],
-            [
-                'kode_gejala' => 'GK027',
-                'nama_gejala' => 'Kulit menjadi kasar',
-            ],
-            [
-                'kode_gejala' => 'GK028',
-                'nama_gejala' => 'Noda hitam pada kulit',
-            ],
-            [
-                'kode_gejala' => 'GK029',
-                'nama_gejala' => 'Kulit mengeluarkan cairan berwarna',
-            ],
-            [
-                'kode_gejala' => 'GK030',
-                'nama_gejala' => 'Kulit terasa kaku dan tebal',
+                'kode_gejala' => 'G24',
+                'nama_gejala' => 'Bagian tengah bercak berwarna putih sedangkan tepinya kecokelatan atau kemerahan',
+          
             ],
         ];
 
