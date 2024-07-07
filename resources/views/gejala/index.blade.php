@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ $item->kode_gejala }}</td>
                     <td>{{ $item->nama_gejala }}</td>
-                    <td><img src="{{ asset('storage/' . $item->gambar) }}" width="50" alt="Gambar Gejala"></td>
+                    <td><img src="{{ asset('storage/' . $item->gambar) }}" onclick="showImage()" width="50" alt="Gambar Gejala"></td>
                     <td>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">Edit</button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">Hapus</button>

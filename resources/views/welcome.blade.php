@@ -19,7 +19,7 @@
                     if (charIndex < text.length) {
                         targetElement.innerHTML += text.charAt(charIndex);
                         charIndex++;
-                        setTimeout(typeChar, 90); // Kecepatan pengetikan karakter
+                        setTimeout(typeChar, 100); // Kecepatan pengetikan karakter
                     }
                 }
             
@@ -49,18 +49,18 @@
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
                 <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">Login</h2>
-                <img src="https://www.datadikti.com/images/uploads/051021/051021.png" alt="">
-                <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Pengguna harus melakukan login sebelum melangkah ke tahap selanjutnya,dan jika belum memiliki akun akan diarahkan ke menu registrasi</p>
+                <img src="https://st2.depositphotos.com/1371557/8007/v/950/depositphotos_80079784-stock-illustration-padlock-cartoon.jpg" alt="">
+                <p class ="text-lg font-normal text-gray-500 dark:text-gray-400 my-4 text-center">Pengguna harus melakukan login sebelum melangkah ke tahap selanjutnya,dan jika belum memiliki akun akan diarahkan ke menu registrasi</p>
             </div>
             <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
                 <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">Tabel Gejala Pasien</h2>
-                <img src="https://www.datadikti.com/images/uploads/051021/051021.png" alt="">
-                <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Dalam tahap ini pengguna akan diberikan beberapa pertanyaan terkait dengan gejala yang di alami</p>
+                <img src="https://png.pngtree.com/png-clipart/20230126/original/pngtree-unhealthy-man-have-red-spots-suffer-from-illness-png-image_8930378.png" alt="">
+                <p class="text-lg font-normal text-gray-500 dark:text-gray-400 my-4 text-center">Dalam tahap ini pengguna akan diberikan beberapa pertanyaan terkait dengan gejala yang di alami</p>
             </div>
             <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
                 <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">Hasil dan Solusi</h2>
-                <img src="https://www.datadikti.com/images/uploads/051021/051021.png" alt="">
-                <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Tahap ini merupakan tahap akhir dimana setelah melakukan test gejala pengguna akan diberikan hasil test berupa nama penyakit dan soluisnya</p>
+                <img src="https://png.pngtree.com/png-vector/20221214/ourmid/pngtree-itchy-skin-allergy-problems-concept-png-image_6523072.png" alt="">
+                <p class="text-lg font-normal text-gray-500 dark:text-gray-400 my-4 text-center">Tahap ini merupakan tahap akhir dimana setelah melakukan test gejala pengguna akan diberikan hasil test berupa nama penyakit dan soluisnya</p>
             </div>
         </div>
     </div>

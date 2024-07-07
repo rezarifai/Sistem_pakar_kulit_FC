@@ -11,7 +11,7 @@
 
 
     <link rel="shortcut icon"
-        href="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.png"
+        href="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.pngs"
         type="image/x-icon">
     <link rel="shortcut icon"
         href="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.png"
