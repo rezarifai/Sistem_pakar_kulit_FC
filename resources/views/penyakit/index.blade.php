@@ -4,7 +4,7 @@
    <div class="card p-3 shadow border-0">
 
     <div class="col-md-3 mb-3">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">
             Tambah
         </button>
     </div>
@@ -35,8 +35,8 @@
             </td>
             <td>
                 <div class="d-flex">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">Edit</button>
-                    <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">Hapus</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">Edit</button>
+                    <button type="button" class="btn btn-warning ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">Hapus</button>
                 </div>
             </td>
         </tr>
