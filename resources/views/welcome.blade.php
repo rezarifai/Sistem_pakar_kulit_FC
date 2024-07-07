@@ -45,6 +45,7 @@
 </section>
 
 <section class="bg-white dark:bg-gray-900" id="alurKerja">
+    <h1 class="dynamic-text mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">Alur Kerja</h1>
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
@@ -64,6 +65,16 @@
             </div>
         </div>
     </div>
+
+</section>
+<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+<h1 class="dynamic-text mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">Tentang kami</h1>
+<p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">
+    Kami fokus pada teknologi dan inovasi untuk memberikan nilai jangka panjang serta mendorong pertumbuhan ekonomi melalui sistem pakar diagnosa penyakit kulit. Dengan kombinasi keahlian medis dan teknologi, kami berkomitmen untuk meningkatkan kualitas hidup Anda.
+</p>
+</div>
+</div>
+
 </section>
 
 @endsection
