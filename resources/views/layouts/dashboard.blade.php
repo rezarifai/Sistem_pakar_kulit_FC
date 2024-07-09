@@ -115,32 +115,32 @@
                         <li class="sidebar-item {{ request()->is('pasiens') ? 'active' : '' }} ">
                             <a href="{{ route('pasiens.index') }}" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
-                                <span>Pasien</span>
+                                <span>Data Pasien</span>
                             </a>
                         </li>
                         <li class="sidebar-item {{ request()->is('penyakit') ? 'active' : '' }} ">
                             <a href="{{ route('penyakit.index') }}" class='sidebar-link'>
-                                <i class="bi bi-image-fill"></i>
-                                <span>Penyakit</span>
+                                <i class="bi bi-hospital"></i>
+                                <span>Data Penyakit</span>
                             </a>
                         </li>
                         <li class="sidebar-item {{ request()->is('gejala') ? 'active' : '' }} ">
                             <a href="{{ route('gejala.index') }}" class='sidebar-link'>
-                                <i class="bi bi-image-fill"></i>
-                                <span>Gejala</span>
+                                <i class="bi bi-building-check"></i>
+                                <span>Data Gejala</span>
                             </a>
                         </li>
                         <li class="sidebar-item {{ request()->is('diagnosa') ? 'active' : '' }}">
                             <a href="{{ route('diagnosa.index') }}" class='sidebar-link'>
-                                <i class="bi bi-envelope-check-fill"></i>
+                                <i class="bi bi-clipboard-data"></i>
                                 <span>Riwayat Diagnosa</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item  {{ request()->is('rules') ? 'active' : '' }} ">
                             <a href="{{ route('rules.index') }}" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>Aturan</span>
+                                <i class="bi bi-calendar2-check"></i>
+                                <span>Rule</span>
                             </a>
                         </li>
                     </ul>

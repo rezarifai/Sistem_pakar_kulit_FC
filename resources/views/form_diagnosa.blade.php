@@ -15,7 +15,7 @@
                 <div class="md:w-1/2 md:text-left text-center md:pl-12 mb-8 md:mb-0">
                     <span class="font-semibold text-base md:text-3xl mb-2">Apakah Anda Mengalami Gejala Ini?</span>
                     <span class="text-base fw-semibold text-red-500">{{ $gejala->kode_gejala }}</span>
-                    <h1 class="font-bold text-5xl md:text-5xl mb-5">{{ $gejala->nama_gejala }}</h1>
+                    <h1 class="font-bold text-4xl md:text-5xl mb-5">{{ $gejala->nama_gejala }}</h1>
 
                     <div class="flex justify-center mt-5-4 gap-4">
                         <form action="{{ route('next.gejala') }}" method="POST">

@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semibold">Riwayat Diagnosa</h6>
+                        <h6 class="text-muted font-semibold">Riwayat</h6>
                         <h6 class="font-extrabold mb-0">10</h6>
                     </div>
                 </div> 

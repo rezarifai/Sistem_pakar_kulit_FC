@@ -12,14 +12,14 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const text = "Selamat Datang di Sistem Pakar Diagnosa Penyakit Kulit";
-                const targetElement = document.querySelector('.dynamic-text'); // Pastikan kelas ini sesuai dengan elemen yang akan diisi teks
+                const targetElement = document.querySelector('.dynamic-text'); 
                 let charIndex = 0;
             
                 function typeChar() {
                     if (charIndex < text.length) {
                         targetElement.innerHTML += text.charAt(charIndex);
                         charIndex++;
-                        setTimeout(typeChar, 100); // Kecepatan pengetikan karakter
+                        setTimeout(typeChar, 100); 
                     }
                 }
             
