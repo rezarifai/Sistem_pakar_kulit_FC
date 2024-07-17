@@ -140,7 +140,7 @@
                         <li class="sidebar-item  {{ request()->is('rules') ? 'active' : '' }} ">
                             <a href="{{ route('rules.index') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar2-check"></i>
-                                <span>Rule</span>
+                                <span>Aturan</span>
                             </a>
                         </li>
                     </ul>
