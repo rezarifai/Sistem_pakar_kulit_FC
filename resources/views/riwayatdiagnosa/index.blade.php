@@ -14,22 +14,29 @@
     @if($riwayatDiagnosa->isEmpty())
     <p>Tidak ada riwayat diagnosa.</p>
     @else
-    <table class="table">
+    <table class="table table-bordered" id="table1">
         <thead>
             <tr>
                 <th>Nama Pasien</th>
                 <th>Tanggal Diagnosa</th>
                 <th>Nama Penyakit</th>
-                <!-- Tambahkan kolom-kolom lain yang Anda ingin tampilkan -->
             </tr>
         </thead>
         <tbody>
-            @foreach($riwayatDiagnosa as $diagnosa)
-            <tr>
-                <td>{{ $diagnosa->user->name }}</td>
-                <td>{{ $diagnosa->created_at }}</td>
-                <td>{{ $diagnosa->penyakit->nama_penyakit }}</td>
-            </tr>
+            @foreach($riwayatDiagnosa as $date => $diagnosesByDate)
+                @foreach($diagnosesByDate as $userId => $diagnosesByUser)
+                    <tr>
+                        <td>{{ $diagnosesByUser->first()->user->name }}</td>
+                        <td>{{ \Carbon\Carbon::parse($date)->format('d M Y ') }}</td>
+                        <td>
+                            <ul>
+                                @foreach($diagnosesByUser as $d)
+                                    <li>{{ $d->penyakit->nama_penyakit }} - {{ $d->persentase }}%</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
             @endforeach
         </tbody>
     </table>
