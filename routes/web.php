@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/check-gejala', [DiagnosaController::class, 'checkGejala']);
     Route::post('/diagnosa/next', [DiagnosaController::class, 'nextGejala'])->name('next.gejala');
     Route::get('/diagnosa/previous', [DiagnosaController::class, 'previousGejala'])->name('previous.gejala');
+    Route::get('/pdf', [PasienController::class, 'exportPDF'])->name('pdf');
+
 
 });
 

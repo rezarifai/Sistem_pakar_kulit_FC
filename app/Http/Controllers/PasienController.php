@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
@@ -13,7 +14,7 @@ class PasienController extends Controller
     public function index()
     {
         $pasiens = Pasien::all();
-        return view('pasien.index',compact('pasiens'));
+        return view('pasien.index', compact('pasiens'));
     }
 
     /**
@@ -31,7 +32,7 @@ class PasienController extends Controller
     {
         $data = $request->all();
         Pasien::create($data);
-        return redirect()->route('pasiens.index')->with('success','Data Berhasil ditambahkan');
+        return redirect()->route('pasiens.index')->with('success', 'Data Berhasil ditambahkan');
     }
 
     /**
@@ -73,9 +74,16 @@ class PasienController extends Controller
      */
     public function destroy(Pasien $pasien)
     {
-      
+
         $pasien->delete();
 
         return redirect()->route('pasiens.index')->with('success', 'Pasien berhasil dihapus!');
     }
+
+    public function exportPDF()
+    {
+        $pasiens = Pasien::all();
+        $pdf = Pdf::loadView('pasien.pdf', compact('pasiens'));
+        return $pdf->download('data-pasien.pdf');
+    }   
 }
