@@ -23,12 +23,14 @@
             <td>{{$item->alamat}}</td>
             <td>{{$item->no_telepon}}</td>
             <td>
+                <div class="d-flex">
                 <a href="{{ route('pasiens.edit', ['pasien' => $item->id]) }}" class="btn btn-primary">Edit</a>
             <form action="{{ route('pasiens.destroy', ['pasien' => $item->id]) }}" method="POST" style="display: inline;">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pasien ini?')">Hapus</button>
             </form>
+                </div>
             </td>
         </tr>
            @endforeach
