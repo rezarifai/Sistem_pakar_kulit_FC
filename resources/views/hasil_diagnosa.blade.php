@@ -5,7 +5,14 @@
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full max-w-6xl mt-20">
         <div class="p-5">
             <h2 class="font-bold text-center text-3xl md:text-5xl mb-5">Hasil Diagnosa</h2>
-            
+            {{-- <div class="user-info mb-5">
+                <h3 class="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Data Diri Pengguna</h3>
+                <p><strong>Nama:</strong> {{ $user->name }}</p>
+                <p><strong>Email:</strong> {{ $user->email }}</p>
+                <p><strong>No Telepon:</strong> {{ $user->phone ?? '-' }}</p>
+                <p><strong>Alamat:</strong> {{ $user->address ?? '-' }}</p>
+                <p><strong>Tanggal Diagnosa:</strong> {{ $today }}</p>
+            </div> --}}
             @if($penyakitTerbesar && count($penyakitTerbesar) > 0)
                 @foreach($penyakitTerbesar as $penyakit)
                 <div class="flex flex-col md:flex-row mb-5">
@@ -39,6 +46,11 @@
                     </li>
                 @endforeach
             </ul>
+            
+        </div>
+        <div class="flex justify-end p-5">
+            <a href="/form-diagnosa" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Diagnosa Ulang</a>
+            <a href="/" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Kembali</a>
         </div>
     </div>
 </section>

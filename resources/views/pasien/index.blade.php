@@ -3,6 +3,8 @@
 @section('content')
    <div class="card shadow border-0">
    <div class="card-body">
+    <a href="{{ route('pdf') }}" class="btn btn-primary">Cetak PDF</a>
+
     <table class="table" id="table1">
         <thead>
             <tr>
