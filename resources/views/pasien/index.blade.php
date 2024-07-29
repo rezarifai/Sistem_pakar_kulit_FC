@@ -3,7 +3,7 @@
 @section('content')
    <div class="card shadow border-0">
    <div class="card-body">
-    <a href="{{ route('pdf') }}" class="btn btn-primary">Cetak PDF</a>
+    <a href="{{ route('pdf') }}" class="btn btn-success">Cetak PDF</a>
 
     <table class="table" id="table1">
         <thead>
@@ -26,11 +26,11 @@
             <td>{{$item->no_telepon}}</td>
             <td>
                 <div class="d-flex">
-                <a href="{{ route('pasiens.edit', ['pasien' => $item->id]) }}" class="btn btn-primary">Edit</a>
+                <a href="{{ route('pasiens.edit', ['pasien' => $item->id]) }}" class="btn btn-success">Edit</a>
             <form action="{{ route('pasiens.destroy', ['pasien' => $item->id]) }}" method="POST" style="display: inline;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pasien ini?')">Hapus</button>
+                <button type="submit" class="btn btn-warning" onclick="return confirm('Apakah Anda yakin ingin menghapus pasien ini?')">Hapus</button>
             </form>
                 </div>
             </td>

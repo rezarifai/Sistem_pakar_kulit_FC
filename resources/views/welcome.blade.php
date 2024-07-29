@@ -1,7 +1,7 @@
 @extends('layouts.landingpage')
 
 @section('content')
-    <section class="bg-gradient-to-b from-blue-100 to-white dark:bg-gray-900 p-5 h-screen flex items-center justify-center">
+    <section class="bg-gradient-to-b from-green-100 to-white dark:bg-gray-900 p-5 h-screen flex items-center justify-center">
         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
             <a href="#"
                 class="inline-flex justify-between items-center py-1 px-1 pe-4 mb-2 text-sm text-green-700 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800">
@@ -48,10 +48,6 @@
                             d="M1 5h12m0 0L9 1m4 4L9 9" />
                     </svg>
                 </a>
-                <a href="#"
-                    class="py-3 px-5 sm:ms-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                    Pelajari lebih lanjut
-                </a>
             </div>
         </div>
     </section>
@@ -93,14 +89,12 @@
         </div>
     </section>
 
-    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+    <div class="py-8 px-4 mb-4 mx-auto max-w-screen-xl lg:py-16">
         <h1
             class="dynamic-text mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">
             Tentang kami</h1>
-        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">
-            Kami fokus pada teknologi dan inovasi untuk memberikan nilai jangka panjang serta mendorong pertumbuhan ekonomi
-            melalui sistem pakar diagnosa penyakit kulit. Dengan kombinasi keahlian medis dan teknologi, kami berkomitmen
-            untuk meningkatkan kualitas hidup Anda.
+        <p class="mb-8 text-lg font-normal text-center text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">
+            Rumah sakit umum daerah (RSUD) di Kabupaten Bantul. Rumah sakit ini melayani pasien baik dari Kabupaten Bantul maupun dari luar daerah karena merupakan jenis rumah sakit umum. RSUD Panembahan Senopati menerima pasien-pasien untuk disembuhkan dengan dukungan dokter ahli dan perawat berkualitas.
         </p>
     </div>
     </div>
@@ -116,15 +110,15 @@
                 <div class="w-1/4 mb-6 md:mb-0">
                     <h2 class="text-lg font-semibold mb-4">Alamat</h2>
                     <p class="text-dark-300">
-                        Jl. Contoh Alamat No.123<br>
-                        Kota, Negara
+                        Jl. Dr. Wahidin Sudiro Husodo, Area Sawah,Trirenggo, Kec. Bantul,<br>
+                        Kabupaten Bantul, Daerah Istimewa Yogyakarta 55714
                     </p>
                 </div>
                 <div class="w-1/4 mb-6 md:mb-0">
                     <h2 class="text-lg font-semibold mb-4">Kontak</h2>
                     <p class="text-dark-300">
-                        Email: <a href="mailto:info@example.com" class="text-blue-400">info@example.com</a><br>
-                        Telepon: <a href="tel:+620000000000" class="text-blue-400">+62 000 0000 0000</a>
+                        Email: <a href="mailto:info@example.com" class="text-blue-400">rsudps@bantulkab.go.id</a><br>
+                        Telepon: <a href="tel:+620000000000" class="text-blue-400">0274 - 367386</a>
                     </p>
                 </div>
                 <div class="w-1/4">
@@ -133,7 +127,7 @@
                         <a href="#" class="text-blue-600 hover:text-white">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .592 0 1.325v21.351C0 23.407.592 24 1.325 24H12.82v-9.294H9.691v-3.622h3.129V8.207c0-3.1 1.893-4.788 4.658-4.788 1.325 0 2.464.098 2.797.142v3.24l-1.918.001c-1.504 0-1.794.714-1.794 1.76v2.31h3.588l-.467 3.622h-3.121V24h6.116C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0z"></path></svg>
                         </a>
-                        <a href="#" class="text-blue-500 hover:text-white">
+                        <a href="https://www.instagram.com/rsudps_bantul" class="text-blue-500 hover:text-white">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.392-1.83.654-2.825.775 1.014-.611 1.793-1.574 2.163-2.723-.951.564-2.005.974-3.127 1.195-.896-.954-2.173-1.55-3.594-1.55-2.718 0-4.92 2.203-4.92 4.92 0 .386.044.762.128 1.124-4.09-.205-7.72-2.165-10.148-5.144-.424.726-.666 1.569-.666 2.468 0 1.702.867 3.205 2.186 4.088-.806-.026-1.564-.248-2.228-.616v.062c0 2.377 1.693 4.362 3.946 4.815-.412.112-.847.172-1.294.172-.314 0-.615-.03-.916-.085.617 1.926 2.404 3.33 4.52 3.37-1.655 1.295-3.743 2.068-6.006 2.068-.39 0-.779-.023-1.17-.068 2.14 1.373 4.683 2.175 7.42 2.175 8.907 0 13.785-7.384 13.785-13.785 0-.21 0-.423-.015-.633.944-.68 1.767-1.52 2.415-2.482z"></path></svg>
                         </a>
                         <a href="#" class="text-red-600 hover:text-white">
@@ -144,7 +138,6 @@
             </div>
             
         </div>
-        <p class="text-dark-300 text-center mt-10">Sistem Pakar Diagnosa Penyakit Kulit</p>
     </footer>
 
 

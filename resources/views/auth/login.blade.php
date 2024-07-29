@@ -6,7 +6,7 @@
             <div class="w-full max-w-md">
                 <div class="bg-white shadow-lg radius-xl rounded-lg overflow-hidden">
                     <div class=" text-green-700 text-center py-4">
-                        <h2 class="text-8xl font-bold">{{ __('Login') }}</h2>
+                        <h2 class="text-5xl font-bold">{{ __('Login') }}</h2>
                     </div>
 
                     <div class="p-6">

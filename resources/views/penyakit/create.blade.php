@@ -14,7 +14,7 @@
             <input type="file" class="form-control" id="gambar" name="gambar">
         </div>
 
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-success">Simpan</button>
     </form>
    </div>
 @endsection
