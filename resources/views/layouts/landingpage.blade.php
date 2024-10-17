@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon"
-        href="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.png"
+        href="https://png.pngtree.com/png-vector/20220420/ourmid/pngtree-expert-systems-blue-gradient-concept-icon-color-type-pictogram-vector-png-image_45342260.jpg"
         type="image/x-icon">
 
     <title>Sistem Pakar Kulit</title>
@@ -29,8 +29,8 @@
     <div class="fixed top-0 w-full z-10">
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-                <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.png" class="h-8" alt="Flowbite Logo" />
+                <a href="https://rsudps.bantulkab.go.id/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="https://png.pngtree.com/png-vector/20220420/ourmid/pngtree-expert-systems-blue-gradient-concept-icon-color-type-pictogram-vector-png-image_45342260.jpg" class="h-8" alt="Flowbite Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sistem Pakar Kulit</span>
                 </a>
                 <div class="flex items-center">
@@ -60,7 +60,7 @@
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                             @endif
                         @else
-                            <a href="{{ route('login') }}" class="text-white bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</a>
+                            <a href="{{ route('login') }}" class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</a>
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Register</a>
                             @endif

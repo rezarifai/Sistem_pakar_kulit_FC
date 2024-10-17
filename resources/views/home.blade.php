@@ -7,7 +7,7 @@
             <div class="card-body px-4 py-4-5">
                 <div class="row">
                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                        <div class="stats-icon green mb-2">
+                        <div class="stats-icon blue mb-2">
                             <i class="iconly-boldProfile"></i>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
             <div class="card-body px-4 py-4-5">
                 <div class="row">
                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                        <div class="stats-icon green mb-2">
+                        <div class="stats-icon blue mb-2">
                             <i class="iconly-boldShow"></i>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
             <div class="card-body px-4 py-4-5">
                 <div class="row">
                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                        <div class="stats-icon green mb-2">
+                        <div class="stats-icon blue mb-2">
                             <i class="iconly-boldShow"></i>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
             <div class="card-body px-4 py-4-5">
                 <div class="row">
                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                        <div class="stats-icon green mb-2">
+                        <div class="stats-icon blue mb-2">
                             <i class="iconly-boldShow"></i>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
             <div class="card-body px-4 py-4-5">
                 <div class="row">
                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                        <div class="stats-icon green mb-2">
+                        <div class="stats-icon blue mb-2">
                             <i class="iconly-boldBookmark"></i>
                         </div>
                     </div>

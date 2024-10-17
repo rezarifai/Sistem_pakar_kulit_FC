@@ -5,7 +5,7 @@
         <div class="flex justify-center">
             <div class="w-full max-w-md">
                 <div class="bg-white shadow-lg radius-xl rounded-lg overflow-hidden">
-                    <div class=" text-green-700 text-center py-4">
+                    <div class=" text-blue-700 text-center py-4">
                         <h2 class="text-5xl font-bold">{{ __('Login') }}</h2>
                     </div>
 
@@ -36,7 +36,7 @@
                             </div>
                             <div class="flex items-center justify-between mb-5">
                                 @if (Route::has('password.request'))
-                                    <a class="text-sm text-green-500 hover:underline float-right"
+                                    <a class="text-sm text-blue-500 hover:underline float-right"
                                         href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
@@ -46,7 +46,7 @@
 
                             <div class="flex items-center justify-between">
                                 <button type="submit"
-                                    class="bg-green-500 text-white w-full py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                                    class="bg-blue-500 text-white w-full py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
                                     {{ __('Login') }}
                                 </button>
 
