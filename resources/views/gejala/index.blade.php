@@ -5,7 +5,7 @@
 <div class="card p-3">
 
     <div class="col-md-3 mb-3">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
             Tambah
         </button>
     </div>
@@ -26,8 +26,8 @@
                     <td>{{ $item->nama_gejala }}</td>
                     <td><img src="{{ asset('storage/' . $item->gambar) }}" onclick="showImage()" width="50" alt="Gambar Gejala"></td>
                     <td>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">Edit</button>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">Hapus</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}">Edit</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">Hapus</button>
                     </td>
                 </tr>
 

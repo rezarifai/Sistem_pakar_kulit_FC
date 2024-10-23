@@ -25,7 +25,7 @@
                         </ul>
                     </td>
                     <td>
-                        <a href="{{ route('rules.edit', $penyakit->id) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('rules.edit', $penyakit->id) }}" class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
                 @endforeach

@@ -46,7 +46,7 @@
 
                             <div class="flex items-center justify-between">
                                 <button type="submit"
-                                    class="bg-blue-500 text-white w-full py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                                    class="bg-blue-500 text-white w-full py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                                     {{ __('Login') }}
                                 </button>
 

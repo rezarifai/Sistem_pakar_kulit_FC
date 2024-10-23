@@ -41,7 +41,7 @@
 
     .previewImage {
         height: 100px;
-        border: 1px solid #334de0
+        border: 1px solid #0025f6
     }
 
 
@@ -65,7 +65,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <a href="/"><img
-                                    src="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.png"
+                                    src=""
                                     class="pt-3" style="max-width: 60px; height: auto;" alt=""></a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">

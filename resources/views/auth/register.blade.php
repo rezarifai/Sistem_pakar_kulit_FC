@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="flex items-center justify-center">
-                            <button type="submit" class="bg-green-500 w-full d-block py-2 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                            <button type="submit" class="bg-blue-500 w-full d-block py-2 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
                                 {{ __('Register') }}
                             </button>
                         </div>
