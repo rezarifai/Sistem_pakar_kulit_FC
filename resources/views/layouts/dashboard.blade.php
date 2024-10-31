@@ -41,7 +41,7 @@
 
     .previewImage {
         height: 100px;
-        border: 1px solid #0025f6
+        border: 1px solid #334de0
     }
 
 
@@ -65,7 +65,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <a href="/"><img
-                                    src=""
+                                    src="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.png"
                                     class="pt-3" style="max-width: 60px; height: auto;" alt=""></a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
@@ -112,12 +112,14 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->is('pasiens') ? 'active' : '' }} ">
+                        <li class="sidebar-item {{ request()->is('pasiens') ? 'active' : '' }}"
+                            {{ request()->is('pasiens') ? 'style=background-color:blue!important;' : '' }}>
                             <a href="{{ route('pasiens.index') }}" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
                                 <span>Data Pasien</span>
                             </a>
                         </li>
+                        
                         <li class="sidebar-item {{ request()->is('penyakit') ? 'active' : '' }} ">
                             <a href="{{ route('penyakit.index') }}" class='sidebar-link'>
                                 <i class="bi bi-hospital"></i>

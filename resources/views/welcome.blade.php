@@ -103,15 +103,12 @@
 
     <footer class="bg-gradient-to-b from-blue-100 to-white text-dark py-3">
         <div class="container mx-auto px-2">
-            <div class="flex flex-wrap justify-content text-center">
-                <div class="text-center">
+            <div class="flex justify-center items-center h-full text-center">
+                <div>
+                    <h2 class="text-lg font-semibold mb-4">Fida Rezaldi Rifai - 203200165 ©Copyright</h2>
                 </div>
-                <div class="">
-                    <h2 class="text-lg font-semibold mb-4 text-center">Fida Rezaldi Rifai - 203200165 ©Copyright</h2>
-                </div>
-            </div>
-            
-        </div>
+            </div>  
+        </div>        
     </footer>
 
 
