@@ -29,7 +29,7 @@
     <div class="fixed top-0 w-full z-10">
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-                <a href="https://rsudps.bantulkab.go.id/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="https://www.instagram.com/rsizzakarawang/" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="https://png.pngtree.com/png-vector/20220420/ourmid/pngtree-expert-systems-blue-gradient-concept-icon-color-type-pictogram-vector-png-image_45342260.jpg" class="h-8" alt="Flowbite Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sistem Pakar Kulit</span>
                 </a>
