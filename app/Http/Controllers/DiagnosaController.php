@@ -139,8 +139,7 @@ class DiagnosaController extends Controller
         return view('riwayatdiagnosa.index', compact('riwayatDiagnosa'));
     }
     
-    
-    /**
+        /**
      * Show the form for creating a new resource.
      */
     public function create()

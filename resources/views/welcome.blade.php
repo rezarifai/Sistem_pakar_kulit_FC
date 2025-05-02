@@ -34,9 +34,9 @@
                 class="dynamic-text mb-4 text-6xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             </h1>
             <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">
-                Kami fokus pada teknologi dan inovasi untuk memberikan nilai jangka panjang serta mendorong pertumbuhan
-                ekonomi melalui sistem pakar diagnosa penyakit kulit. Dengan kombinasi keahlian medis dan teknologi, kami
-                berkomitmen untuk meningkatkan kualitas hidup Anda.
+                Sistem ini dirancang untuk membantu Anda mengenali dan mengetahui kemungkinan jenis penyakit kulit berdasarkan gejala yang Anda alami. Dengan teknologi sistem pakar, kami menghadirkan solusi cepat dan akurat sebagai langkah awal sebelum Anda berkonsultasi langsung dengan dokter spesialis.
+
+
             </p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
                 <a href="{{ route('form.penyakit') }}"
