@@ -10,7 +10,12 @@ class Diagnosa extends Model
     use HasFactory;
 
     protected $table = 'diagnosa';
-    protected $fillable = ['user_id', 'tanggal_diagnosa', 'penyakit_id', 'persentase'];
+    protected $fillable = ['user_id', 'tanggal_diagnosa', 'penyakit_id', 'persentase', 'gejala_terpilih'];
+
+    protected $casts = [
+        'gejala_terpilih' => 'array',
+    ];
+    
 
     public function user()
     {
@@ -21,4 +26,5 @@ class Diagnosa extends Model
     {
         return $this->belongsTo(Penyakit::class);
     }
+
 }

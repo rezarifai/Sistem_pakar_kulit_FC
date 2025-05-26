@@ -14,24 +14,31 @@
                 <p><strong>Tanggal Diagnosa:</strong> {{ $today }}</p>
             </div> --}}
             @if($penyakitTerbesar && count($penyakitTerbesar) > 0)
-                @foreach($penyakitTerbesar as $penyakit)
-                <div class="flex flex-col md:flex-row mb-5">
-                    <div class="md:w-1/3 mx-auto mb-3 md:mb-0 text-center">
-                        <img src="{{ asset('storage/' . $penyakit['gambar']) }}" alt="{{ $penyakit['nama'] }}" class="mb-3 max-h-150px mx-auto">
-                    </div>
-                    <div class="md:w-2/3">
-                        <div class="result-card mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-md">
-                            <h3 class="text-primary text-2xl font-semibold">{{ $penyakit['nama'] }}</h3>
-                            <p><strong>Kode Penyakit:</strong> {{ $penyakit['kode'] }}</p>
-                            <p><strong>Penyebab:</strong> {{ $penyakit['penyebab'] }}</p>
-                            <p><strong>Solusi:</strong> {{ $penyakit['solusi'] }}</p>
-                            <p><strong>Persentase Kemungkinan:</strong> 
-                                <span class="bg-green-500 text-white py-1 px-2 rounded-md">{{ round($penyakit['persentase'], 2) }}%</span>
-                            </p>
-                        </div>
+            @foreach($penyakitTerbesar as $penyakit)
+            <div class="flex flex-col md:flex-row mb-5">
+                <div class="md:w-1/3 mx-auto mb-3 md:mb-0 text-center">
+                    <img src="{{ asset('storage/' . $penyakit['gambar']) }}" alt="{{ $penyakit['nama'] }}" class="mb-3 max-h-150px mx-auto">
+                </div>
+                <div class="md:w-2/3">
+                    <div class="result-card mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-md">
+                        <h3 class="text-primary text-2xl font-semibold">{{ $penyakit['nama'] }}</h3>
+                        <p><strong>Kode Penyakit:</strong> {{ $penyakit['kode'] }}</p>
+                        <p><strong>Penyebab:</strong> {{ $penyakit['penyebab'] }}</p>
+                        <p><strong>Solusi:</strong> {{ $penyakit['solusi'] }}</p>
+                        <p><strong>Persentase Kemungkinan:</strong> 
+                            @php
+                                $persen = round($penyakit['persentase'], 2);
+                                $warna = $persen < 50 ? 'bg-red-500' : 'bg-green-500';
+                            @endphp
+                            <span class="{{ $warna }} text-white py-1 px-2 rounded-md">
+                                {{ $persen }}%
+                            </span>
+                        </p>
                     </div>
                 </div>
-                @endforeach
+            </div>
+        @endforeach
+        
             @else
                 <p class="text-center text-xl text-gray-700 dark:text-gray-300">Tidak ada penyakit yang teridentifikasi berdasarkan gejala yang dipilih.</p>
             @endif

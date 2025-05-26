@@ -42,7 +42,7 @@
                             <a href="#alurKerja" class="text-gray-900 dark:text-white hover:text-blue-800">Alur Kerja</a>
                         </li>
                         <li>
-                            <a href="#" class="text-gray-900 dark:text-white hover:text-blue-800">Tentang Kami</a>
+                            <a href="#t" class="text-gray-900 dark:text-white hover:text-blue-800">Tentang Kami</a>
                         </li>
                     </ul>
                 </div>

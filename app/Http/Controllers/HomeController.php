@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Gejala;
 use App\Models\Pasien;
 use App\Models\Penyakit;
+use App\Models\Diagnosa;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -30,6 +33,17 @@ class HomeController extends Controller
         $jumlahPasien = Pasien::count();
         $jumlahGejala = Gejala::count();
         $jumlahPenyakit = Penyakit::count();
-        return view('home',compact('jumlahPasien','jumlahGejala','jumlahPenyakit'));
+        $riwayat = Diagnosa::get()
+        ->map(function ($item) {
+            return [
+                'user_id' => $item->user_id,
+                'waktu' => $item->created_at->format('Y-m-d H:i:s') // tanggal + jam + menit + detik
+            ];
+        })
+        ->unique()
+        ->count();
+    
+    
+        return view('home',compact('jumlahPasien','jumlahGejala','jumlahPenyakit','riwayat'));
     }
 }

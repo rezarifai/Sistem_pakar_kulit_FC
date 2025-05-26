@@ -89,7 +89,7 @@
         </div>
     </section>
 
-    <div class="py-8 px-4 mb-4 mx-auto max-w-screen-xl lg:py-16">
+    <div class="py-8 px-4 mb-4 mx-auto max-w-screen-xl lg:py-16" id="t">
         <h1
             class="dynamic-text mb-4 text-4xl font-bold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center">
             Tentang kami</h1>

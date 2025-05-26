@@ -106,9 +106,11 @@ class DiagnosaController extends Controller
                     'user_id' => auth()->id(),
                     'tanggal_diagnosa' => now(),
                     'penyakit_id' => $id,
-                    'persentase' => $penyakit['persentase']
+                    'persentase' => $penyakit['persentase'],
+                    'gejala_terpilih' => json_encode(session('gejala_dijawab'))
                 ]);
             }
+            
         } else {
             $penyakitTerbesar = null;
         }
@@ -130,7 +132,7 @@ class DiagnosaController extends Controller
         $riwayatDiagnosa = Diagnosa::with('penyakit', 'user')
             ->get()
             ->groupBy(function($diagnosa) {
-                return \Carbon\Carbon::parse($diagnosa->created_at)->format('Y-m-d'); // Mengelompokkan berdasarkan tanggal
+                return \Carbon\Carbon::parse($diagnosa->created_at)->format('Y-m-d H:i:s'); // Mengelompokkan berdasarkan tanggal
             })
             ->map(function($diagnosesByDate) {
                 return $diagnosesByDate->groupBy('user_id'); // Mengelompokkan berdasarkan user_id
@@ -218,13 +220,5 @@ class DiagnosaController extends Controller
         $item->save();
 
         return redirect()->route('gejala.index')->with('success', 'Gejala berhasil diperbarui!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

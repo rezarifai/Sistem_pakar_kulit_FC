@@ -14,12 +14,13 @@
     @if($riwayatDiagnosa->isEmpty())
     <p>Tidak ada riwayat diagnosa.</p>
     @else
-    <table class="table table-bordered" id="table1">
+    <table class="table table-bordered table-striped" id="table1">
         <thead>
             <tr>
                 <th>Nama Pasien</th>
                 <th>Tanggal Diagnosa</th>
                 <th>Nama Penyakit</th>
+                <th>Gejala yang Dipilih</th> 
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,27 @@
                                 @endforeach
                             </ul>
                         </td>
+                        @php
+    $gejalaTerpilih = json_decode($diagnosesByUser->first()->gejala_terpilih, true);
+    $gejalaIds = collect($gejalaTerpilih)
+                    ->where('jawaban', 'ya')
+                    ->pluck('id')
+                    ->unique()
+                    ->toArray();
+
+    // Ambil data nama gejala dari database berdasarkan ID
+    $gejalas = \App\Models\Gejala::whereIn('id', $gejalaIds)->pluck('nama_gejala', 'id');
+@endphp
+
+<td>
+    <ul>
+        @foreach ($gejalaIds as $id)
+            <li>{{ $gejalas[$id] ?? 'Gejala tidak ditemukan' }}</li>
+        @endforeach
+    </ul>
+</td>
+
+    
                     </tr>
                 @endforeach
             @endforeach
