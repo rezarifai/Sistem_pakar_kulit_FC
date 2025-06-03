@@ -17,87 +17,87 @@ class GejalaSeeder extends Seeder
         $gejalaPenyakitKulit = [
             [
                 'kode_gejala' => 'G01',
-                'nama_gejala' => 'Ada peradangan pada kulit berwarna kemerahan ',
+                'nama_gejala' => 'Riwayat kontak dengan substance tertentu sebelum keluhan ',
             ],
             [
                 'kode_gejala' => 'G02',
-                'nama_gejala' => 'Terdapat bintik-bintik warna merah',
+                'nama_gejala' => 'Bercak dan bintik kemerahan hingga blister pada daerah yang berkontak dengan bahan tertentu',
             ],
             [
                 'kode_gejala' => 'G03',
-                'nama_gejala' => 'Kulit kering dan bersisik  ',
+                'nama_gejala' => 'Kulit kering, bersisik, dan pecah-pecah ',
             ],
             [
                 'kode_gejala' => 'G04',
-                'nama_gejala' => 'Bercak kemerahan yang terasa gatal di sekitar mulut dan hidung, tetapi tidak menimbulkan nyeri ',
+                'nama_gejala' => 'Keluhan gatal dan kemerahan bersisik pada daerah kulit kepala, alis, telinga, atau daerah lain yang banyak mengandung kelenjar sebasea (mis. Punggung, dada, etc.) ',
             ],
             [
                 'kode_gejala' => 'G05',
-                'nama_gejala' => 'Koreng berwarna kuning kecokelatan di sekitar luka ',
+                'nama_gejala' => 'Bercak Kulit Tebal dan Merah dengan Sisik Putih Keperakan ',
             ],
             [
                 'kode_gejala' => 'G06',
-                'nama_gejala' => 'Iritasi pada kulit di sekitar luka ',
+                'nama_gejala' => 'Erythema bersquama pada daerah perbatasan dengan rambut atau daerah lain yang banyak mengandung kelenjar sebasea ',
             ],
             [
                 'kode_gejala' => 'G07',
-                'nama_gejala' => 'Pembengkakan dan kemerahan',
+                'nama_gejala' => 'Bercak merah bersisik tebal yang gatal terutama pada daerah yang sering bergesekan, misalkan pada siku, lutut, dan punggung. Pada beberapa kasus mungkin disertai nyeri, distrofi kuku, mata kering, peradangan conjunctiva, blepharitis, dan nyeri sendi',
             ],
             [
                 'kode_gejala' => 'G08',
-                'nama_gejala' => 'Rasa nyeri atau sakit pada area yang terinfeksi ',
+                'nama_gejala' => 'Squama tebal, candle sign, Auspitz sign, Koebner sign',
             ],
             [
                 'kode_gejala' => 'G09',
-                'nama_gejala' => 'Bernanah atau pus',
+                'nama_gejala' => 'Lepuh pecah dan membentuk kerak berwarna madu atau kuning kecoklatan',
             ],
             [
                 'kode_gejala' => 'G10',
-                'nama_gejala' => 'Luka melepuh atau lepuhan ',
+                'nama_gejala' => 'Bintik-bintik berisi cairan menyerupai cacar, kadang berisi pus/nanah, terasa gatal, dan tidak selalu diiringi dengan demam ',
             ],
             [
                 'kode_gejala' => 'G11',
-                'nama_gejala' => 'Sensasi Gatal, Terbakar, atau Kesemutan ',
+                'nama_gejala' => 'Honey-coloured crusted lesion',
             ],
             [
                 'kode_gejala' => 'G12',
-                'nama_gejala' => 'Pembengkakan dan Kemerahan ',
+                'nama_gejala' => 'Gejala diawali macula erythematosa tunggal yang berubah menjadi vesicle atau pustula yang ketika pecah mengeluarkan cairan serosa yang mengering dan menjadi crusta eksudat yang berwarna kekuningan seperti madu di atas erosi kulit. Lesi ini kemudian menyebar ke area distal melalui inokulasi luka lain saat ada garukan',
             ],
             [
                 'kode_gejala' => 'G13',
-                'nama_gejala' => 'Kulit terasa gatal ',
+                'nama_gejala' => 'Bintik-bintik berisi cairan bening disertai dengan demam, nyeri kepala, dan malaise. Lesi biasanya berpola sebaran sentripetal dimulai di tubuh dahulu ',
             ],
             [
                 'kode_gejala' => 'G14',
-                'nama_gejala' => 'Ruam Berbentuk Garis atau Gelembung',
+                'nama_gejala' => 'Tear drop vesicle',
             ],
             [
                 'kode_gejala' => 'G15',
-                'nama_gejala' => 'PKulit kering dan berkerak ',
+                'nama_gejala' => 'Erupsi macular yang, dalam beberapa jam, berubah menjadi papula, teardrop vesicle yang gatal, dengan dasar kemerahan. Lesi kemudian akan berubah menjadi pustula dan crusta ',
             ],
             [
                 'kode_gejala' => 'G16',
-                'nama_gejala' => 'Ruam Merah Berbentuk Cincin ',
+                'nama_gejala' => 'Bintik-bintik dengan sebaran terlokalisir. Merupakan penyakit dengan etiologi yang sama dengan chicken pox, reaktivasi virus Varicella zoster pada fase laten. ',
             ],
             [
                 'kode_gejala' => 'G17',
-                'nama_gejala' => 'Deskuamasi dan Penebalan Kulit ',
+                'nama_gejala' => 'Lokasi lesi sesuai dengan dermatom ',
             ],
             [
                 'kode_gejala' => 'G18',
-                'nama_gejala' => 'Kulit Pecah-pecah atau Mengelupas ',
+                'nama_gejala' => 'Lancinating, dysesthetic, atau nyeri pada lokasi lesi sesuai dengan dermatom, disertai ruam, crops of vesicles dengan dasar erythematous. Biasanya lokasi pada satu atau lebih dermatom berdekatan pada regio thorax atau lumbal, bersifat unilateral, dan tidak melewati bagian tengah tubuh. Mungkin ada lesi satelit ',
             ],
             [
                 'kode_gejala' => 'G19',
-                'nama_gejala' => 'Papula,benjolan kecil kemerahan yang biasanya terasa nyeri ',
+                'nama_gejala' => 'Bercak kemerahan yang gatal terutama pada saat berkeringat di daerah sela paha dan bokong ',
             ],
             [
                 'kode_gejala' => 'G20',
-                'nama_gejala' => 'Pastula,benjolan kecil yang diujungnya terdapat Kumpulan nanah berwarna putih kekuningan',
+                'nama_gejala' => 'Faktor risiko berkaitan dengan moist environment (mis. Pakaian basah dan restriktif, cuaca hangat, obesitas)',
             ],
             [
                 'kode_gejala' => 'G21',
-                'nama_gejala' => 'Nodul,benjolan cukup besar dibawah kulit yang teraba padat dan terasa nyeri ',
+                'nama_gejala' => 'Lesi pruritik kemerahan berbentuk cincin, aktif pada bagian tepi lesi yang meluas dari crural fold ke lipat paha bagian dalam atau bagian lain yang berdekatan. Lesi mungkin bilateral ',
             ],
             [
                 'kode_gejala' => 'G22',
@@ -105,11 +105,35 @@ class GejalaSeeder extends Seeder
             ],
             [
                 'kode_gejala' => 'G23',
-                'nama_gejala' => 'Hilangnya pigmen warna di rambut, janggut, bulu mata, dan alis, sehingga terlihat seperti uban  ',
+                'nama_gejala' => 'Bintik-bintik kemerahan pada daerah wajah dan punggung, kadang disertai keluhan gatal dan/atau nyeri  ',
             ],
             [
                 'kode_gejala' => 'G24',
-                'nama_gejala' => 'Bagian tengah bercak berwarna putih sedangkan tepinya kecokelatan atau kemerahan',
+                'nama_gejala' => 'Comedone, papula, pustula, nodul, dan/atau kista sebagai akibat dari sumbatan dan inflamasi dari pilosebaceous unit ',
+            ],
+            [
+                'kode_gejala' => 'G25',
+                'nama_gejala' => 'Bercak putih seperti susu pada bagian kulit yang tidak gatal dan tidak nyeri ',
+            ],
+            [
+                'kode_gejala' => 'G26',
+                'nama_gejala' => 'Kenampakan hypopigmented atau depigmented areas dengan berbagai ukuran, berbatas tegas, dan simetris ',
+            ],
+            [
+                'kode_gejala' => 'G27',
+                'nama_gejala' => 'Bercak putih seperti susu pada bagian kulit yang tidak gatal dan tidak nyeri. Bisa terlokalisir (segmental vitiligo) maupun mencakup area luas (universal vitiligo) ',
+            ],
+            [
+                'kode_gejala' => 'G28',
+                'nama_gejala' => 'Bentol besar dan kemerahan yang disertai rasa gatal dan panas, tidak ada predileksi tertentu (bisa di bagian tubuh mana pun) ',
+            ],
+            [
+                'kode_gejala' => 'G29',
+                'nama_gejala' => 'Plak pruritik, erythematous, berbatas tegas yang timbul sebagai akibat reaksi hipersensitivitas atau penyakit autoimun ',
+            ],
+            [
+                'kode_gejala' => 'G30',
+                'nama_gejala' => 'Gatal pada kulit yang mengalami ruam ',
           
             ],
         ];

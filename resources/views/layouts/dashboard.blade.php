@@ -11,10 +11,10 @@
 
 
     <link rel="shortcut icon"
-        href="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.pngs"
+        href="{{ asset('assets/img/icon.png') }}"
         type="image/x-icon">
     <link rel="shortcut icon"
-        href="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.png"
+        href="{{ asset('assets/img/icon.png') }}"
         type="image/png">
     <link rel="stylesheet" href="{{ asset('../assets') }}/compiled/css/app.css">
     <link rel="stylesheet" href="{{ asset('../assets') }}/compiled/css/app-dark.css">
@@ -65,7 +65,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <a href="/"><img
-                                    src="https://seeklogo.com/images/R/rsud-panembahan-senopati-bantul-logo-CFB1993299-seeklogo.com.png"
+                                    src="{{ asset('assets/img/icon.png') }}"
                                     class="pt-3" style="max-width: 60px; height: auto;" alt=""></a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
