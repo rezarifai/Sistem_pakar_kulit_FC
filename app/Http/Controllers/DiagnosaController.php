@@ -7,6 +7,7 @@ use App\Models\Diagnosa;
 use App\Models\Penyakit;
 use App\Models\Gejala;
 use App\Models\Rule;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DiagnosaController extends Controller
 {
@@ -240,5 +241,45 @@ class DiagnosaController extends Controller
         $item->save();
 
         return redirect()->route('gejala.index')->with('success', 'Gejala berhasil diperbarui!');
+    }
+
+    public function cetakPDF()
+    {
+        $user = auth()->user();
+        $today = now()->toDateString();
+
+        // Ambil diagnosa terakhir
+        $lastDiagnosa = Diagnosa::where('user_id', $user->id)
+            ->latest()
+            ->first();
+
+        if (!$lastDiagnosa) {
+            return redirect('/form-diagnosa')->with('error', 'Tidak ada data diagnosa untuk dicetak.');
+        }
+
+        // Ambil semua diagnosa di menit yang sama
+        $createdAtMinute = $lastDiagnosa->created_at->format('Y-m-d H:i');
+        $diagnosas = Diagnosa::where('user_id', $user->id)
+            ->whereRaw("DATE_FORMAT(created_at, '%Y-%m-%d %H:%i') = ?", [$createdAtMinute])
+            ->with('penyakit')
+            ->get();
+
+        // Ambil semua penyakit dari diagnosa tersebut
+        $penyakits = $diagnosas->pluck('penyakit');
+
+        // Ambil semua gejala yang terakhir dipilih
+        $gejalaTerpilih = json_decode($lastDiagnosa->gejala_terpilih, true);
+        $ids = collect($gejalaTerpilih)->pluck('id')->toArray();
+        $selectedSymptoms = Gejala::whereIn('id', $ids)->get();
+
+        $pdf = Pdf::loadView('pdf.hasil', [
+            'penyakits' => $penyakits,
+            'selectedSymptoms' => $selectedSymptoms,
+            'user' => $user,
+            'today' => $today,
+            'lastDiagnosa' => $lastDiagnosa,
+        ]);
+
+        return $pdf->download('hasil_diagnosa_' . $today . '.pdf');
     }
 }
