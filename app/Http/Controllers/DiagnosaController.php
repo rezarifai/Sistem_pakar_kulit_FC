@@ -76,24 +76,41 @@ class DiagnosaController extends Controller
                 ->toArray();
 
             session()->put('gejala_aktif', $gejalaBaru);
+
+            $gejalaDijawab = collect(session('gejala_dijawab'))->pluck('id')->toArray();
+            $selanjutnya = collect($gejalaBaru)->first(fn($g) => !in_array($g, $gejalaDijawab));
+
+            if ($selanjutnya) {
+                session()->put('index_gejala', array_search($selanjutnya, $gejalaBaru));
+                return view('form_diagnosa', [
+                    'gejala' => \App\Models\Gejala::find($selanjutnya),
+                    'total_gejala' => count($gejalaBaru),
+                    'index_gejala' => session('index_gejala') + 1
+                ]);
+            } else {
+                return $this->prosesDiagnosa();
+            }
         }
 
         $indexGejala = session()->get('index_gejala') + 1;
         session()->put('index_gejala', $indexGejala);
 
         $gejalaAktif = session()->get('gejala_aktif');
+        $gejalaDijawab = collect(session('gejala_dijawab'))->pluck('id')->toArray();
 
-        if (isset($gejalaAktif[$indexGejala])) {
+        $nextGejalaId = collect($gejalaAktif)->first(fn($g) => !in_array($g, $gejalaDijawab));
+
+        if ($nextGejalaId) {
+            session()->put('index_gejala', array_search($nextGejalaId, $gejalaAktif));
             return view('form_diagnosa', [
-                'gejala' => Gejala::find($gejalaAktif[$indexGejala]),
+                'gejala' => \App\Models\Gejala::find($nextGejalaId),
                 'total_gejala' => count($gejalaAktif),
-                'index_gejala' => $indexGejala + 1
+                'index_gejala' => session('index_gejala') + 1
             ]);
         } else {
             return $this->prosesDiagnosa();
         }
     }
-
 
     private function prosesDiagnosa()
     {
