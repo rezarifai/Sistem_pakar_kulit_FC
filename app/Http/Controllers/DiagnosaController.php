@@ -107,7 +107,7 @@ class DiagnosaController extends Controller
                     'tanggal_diagnosa' => now(),
                     'penyakit_id' => $id,
                     'persentase' => $penyakit['persentase'],
-                    'gejala_terpilih' => json_encode(session('gejala_dijawab'))
+                    'gejala_terpilih' => json_encode(session('gejala_dijawab'))x
                 ]);
             }
             

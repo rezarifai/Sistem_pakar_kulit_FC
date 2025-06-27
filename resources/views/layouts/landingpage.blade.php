@@ -28,9 +28,10 @@
     <div class="fixed top-0 w-full z-10">
         <nav class="bg-white border-gray-200 dark:bg-gray-900">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-                <a href="https://www.instagram.com/rsizzakarawang/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="https://www.instagram
+                .com/rsizzakarawang/" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="{{ asset('assets/img/icon.png') }}" class="h-10 max-h-16" alt="Flowbite Logo" />
-                    <span class="self-center text-3xl font-bold tracking-wide text-gray-800 dark:text-white">
+                    <span class="self-center text-2xl font-bold tracking-wide text-gray-800 dark:text-white">
                         Rumah Sakit Izza 
                       </span>
                 </a>
