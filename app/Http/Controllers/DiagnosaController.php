@@ -6,68 +6,94 @@ use Illuminate\Http\Request;
 use App\Models\Diagnosa;
 use App\Models\Penyakit;
 use App\Models\Gejala;
+use App\Models\Rule;
 
 class DiagnosaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-        public function formPenyakit()
+    public function formPenyakit()
     {
         $penyakits = Penyakit::all();
-        return view('form_penyakit',compact('penyakits'));
+        return view('form_penyakit', compact('penyakits'));
     }
-        
+
     public function formDiagnosa()
     {
-        $gejalaPertama = Gejala::first();
-        $semuaGejala = Gejala::pluck('id')->toArray();
-        session()->put('penyakit_diperiksa', []);
+        $rules = Rule::with('gejala', 'penyakit')->get()->groupBy('penyakit_id');
+
+        $penyakitRules = [];
+        foreach ($rules as $penyakitId => $ruleList) {
+            $penyakitRules[$penyakitId] = $ruleList->pluck('gejala_id')->toArray();
+        }
+
+        $semuaGejala = collect($penyakitRules)->flatten()->unique()->values()->toArray();
+
+        session()->put('penyakit_rules', $penyakitRules);
+        session()->put('penyakit_diperiksa', array_keys($penyakitRules));
         session()->put('gejala_dijawab', []);
-        session()->put('semua_gejala', $semuaGejala);
         session()->put('index_gejala', 0);
-        session()->put('total_gejala', count($semuaGejala));
+        session()->put('gejala_aktif', $semuaGejala);
 
         return view('form_diagnosa', [
-            'gejala' => $gejalaPertama,
+            'gejala' => Gejala::find($semuaGejala[0]),
             'total_gejala' => count($semuaGejala),
             'index_gejala' => 1
         ]);
     }
+
 
     public function nextGejala(Request $request)
     {
         $gejalaId = $request->input('gejala_id');
         $jawaban = $request->input('jawaban');
 
-        // Simpan jawaban ke sesi
         session()->push('gejala_dijawab', [
             'id' => $gejalaId,
             'jawaban' => $jawaban
         ]);
 
-        // Dapatkan indeks gejala berikutnya
-        $indexGejala = session()->get('index_gejala');
-        $indexGejala++;
+        $rules = session()->get('penyakit_rules');
+        $aktifPenyakit = session()->get('penyakit_diperiksa');
+
+        if ($jawaban === 'tidak') {
+            $aktifPenyakit = array_filter($aktifPenyakit, function ($penyakitId) use ($rules, $gejalaId) {
+                return !in_array($gejalaId, $rules[$penyakitId]);
+            });
+
+            session()->put('penyakit_diperiksa', $aktifPenyakit);
+
+            if (empty($aktifPenyakit)) {
+                return $this->prosesDiagnosa();
+            }
+
+            $gejalaBaru = collect($aktifPenyakit)
+                ->map(fn($id) => $rules[$id])
+                ->flatten()
+                ->unique()
+                ->values()
+                ->toArray();
+
+            session()->put('gejala_aktif', $gejalaBaru);
+        }
+
+        $indexGejala = session()->get('index_gejala') + 1;
         session()->put('index_gejala', $indexGejala);
 
-        $semuaGejala = session()->get('semua_gejala');
-        $totalGejala = count($semuaGejala);
+        $gejalaAktif = session()->get('gejala_aktif');
 
-        // Periksa apakah masih ada gejala yang belum dijawab
-        if ($indexGejala < count($semuaGejala)) {
-            $gejalaBerikutnyaId = $semuaGejala[$indexGejala];
-            $gejalaBerikutnya = Gejala::find($gejalaBerikutnyaId);
+        if (isset($gejalaAktif[$indexGejala])) {
             return view('form_diagnosa', [
-                'gejala' => $gejalaBerikutnya,
-                'total_gejala' => $totalGejala,
-                'index_gejala' => $indexGejala + 1 // Menambah 1 agar sesuai dengan urutan manusia
+                'gejala' => Gejala::find($gejalaAktif[$indexGejala]),
+                'total_gejala' => count($gejalaAktif),
+                'index_gejala' => $indexGejala + 1
             ]);
         } else {
-            // Jika semua gejala telah dijawab, proses hasil diagnosa
             return $this->prosesDiagnosa();
         }
     }
+
 
     private function prosesDiagnosa()
     {
@@ -107,10 +133,9 @@ class DiagnosaController extends Controller
                     'tanggal_diagnosa' => now(),
                     'penyakit_id' => $id,
                     'persentase' => $penyakit['persentase'],
-                    'gejala_terpilih' => json_encode(session('gejala_dijawab'))x
+                    'gejala_terpilih' => json_encode(session('gejala_dijawab'))
                 ]);
             }
-            
         } else {
             $penyakitTerbesar = null;
         }
@@ -126,36 +151,28 @@ class DiagnosaController extends Controller
 
         return view('hasil_diagnosa', compact('penyakitTerbesar', 'selectedSymptoms', 'user', 'today'));
     }
-    
+
     public function index()
     {
         $riwayatDiagnosa = Diagnosa::with('penyakit', 'user')
             ->get()
-            ->groupBy(function($diagnosa) {
-                return \Carbon\Carbon::parse($diagnosa->created_at)->format('Y-m-d H:i:s'); // Mengelompokkan berdasarkan tanggal
+            ->groupBy(function ($diagnosa) {
+                return \Carbon\Carbon::parse($diagnosa->created_at)->format('Y-m-d H:i:s');
             })
-            ->map(function($diagnosesByDate) {
-                return $diagnosesByDate->groupBy('user_id'); // Mengelompokkan berdasarkan user_id
+            ->map(function ($diagnosesByDate) {
+                return $diagnosesByDate->groupBy('user_id');
             });
-        
+
         return view('riwayatdiagnosa.index', compact('riwayatDiagnosa'));
     }
-    
-        /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('riwayatdiagnosa.create');
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
             'nama_pasien' => 'required|unique:gejala',
             'tanggal_lahir' => 'required',
@@ -164,7 +181,6 @@ class DiagnosaController extends Controller
             'riwayat_kesehatan' => 'required',
         ]);
 
-        // Simpan data gejala ke dalam database
         $diagnosas = new Diagnosa();
         $diagnosas->nama_pasien = $request->nama_pasien;
         $diagnosas->tanggal_lahir = $request->tanggal_lahir;
@@ -173,36 +189,24 @@ class DiagnosaController extends Controller
         $diagnosas->riwayat_kesehatan = $request->riwayat_kesehatan;
         $diagnosas->save();
 
-        // Redirect atau berikan respons sesuai kebutuhan aplikasi Anda
         return redirect()->route('riwayatdiagnosa.index')->with('success', 'Diagnosa berhasil ditambahkan!');
     }
 
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        $diagnosas = Diagnosa::findOrFail($id); 
+        $diagnosas = Diagnosa::findOrFail($id);
         return view('riwayatdiagnosa.edit', compact('riwayatdiagnosa'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $item = Diagnosa::findOrFail($id);
 
-        // Validasi input
         $request->validate([
             'nama_pasien' => 'required',
             'tanggal_lahir' => 'required',
@@ -211,7 +215,6 @@ class DiagnosaController extends Controller
             'riwayat_kesehatan' => 'required',
         ]);
 
-        // Update data gejala dengan data baru
         $item->nama_pasien = $request->nama_pasien;
         $item->tanggal_lahir = $request->tanggal_lahir;
         $item->alamat = $request->alamat;
